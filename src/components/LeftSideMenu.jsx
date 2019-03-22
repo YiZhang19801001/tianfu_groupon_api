@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { history } from "../history";
 
 const LeftSideMenu = () => {
-  console.log(history.location.pathname);
-
   const getClass = path => {
-    const historyPath = history.location.pathname;
+    const historyPath = history.location.pathname.substr(14);
+    console.log({ string: history.location.pathname, substr: historyPath });
+
     const positionOfSecondSlash = historyPath.indexOf("/", 2);
     const compareString =
       positionOfSecondSlash === -1
