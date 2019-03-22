@@ -2,7 +2,7 @@
   "name": "groupon_c_panel",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://kidsnparty.com.au/beautifulfruit/admin",
+  "homepage": "http://kidsnparty.com.au/groupon/admin",
   "dependencies": {
     "ajv": "^6.7.0",
     "axios": "^0.18.0",

@@ -53,6 +53,15 @@ class CustomerOrderCard extends React.Component {
           orderCard_userName: { textShadow: `0px 0px 3px #dfdede` },
           title: { borderColor: `#dfdede` }
         };
+      case 6:
+        return {
+          orderCard_tab: {
+            backgroundColor: `#f55747`,
+            borderColor: `#93352c`
+          },
+          orderCard_userName: { textShadow: `0px 0px 3px #f55747` },
+          title: { borderColor: `#f55747` }
+        };
       default:
         return {};
     }
