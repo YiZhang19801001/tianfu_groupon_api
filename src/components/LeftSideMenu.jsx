@@ -5,7 +5,8 @@ import { history } from "../history";
 
 const LeftSideMenu = () => {
   const getClass = path => {
-    const historyPath = history.location.pathname.substr(14);
+    const numberOfRootPath = process.env.PUBLIC_URL.length;
+    const historyPath = history.location.pathname.substr(numberOfRootPath);
     console.log({ string: history.location.pathname, substr: historyPath });
 
     const positionOfSecondSlash = historyPath.indexOf("/", 2);
