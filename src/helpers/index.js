@@ -59,3 +59,29 @@ export const getStyle = value => {
     return { backgroundColor: "#f7dba185" };
   }
 };
+
+export const sorting = (property, sortOrder, objects) => {
+  const sortedArray = objects.sort(dynamicSort(property, sortOrder));
+  return sortedArray;
+};
+export const dynamicSort = (property, sortOrder) => {
+  return function(a, b) {
+    var result =
+      a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+    return result * sortOrder;
+  };
+};
+
+export const makeOrderListTotal = list => {
+  let sum = 0;
+  let total = 0;
+  let detailString = "";
+  list.map(ele => {
+    sum += parseInt(ele.quantity);
+    total += parseFloat(ele.total);
+    detailString += `${ele.name} x ${ele.quantity}, `;
+  });
+
+  total = total.toFixed(2);
+  return { sum, total, detailString };
+};

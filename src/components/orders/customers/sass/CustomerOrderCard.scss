@@ -1,0 +1,41 @@
+.component-customer-order-list__without-details {
+  .component-detail-view-table {
+    table {
+      tbody {
+        tr {
+          td {
+            color: #000;
+            font-size: 14px;
+            span {
+              display: inline-block;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.component-customer-order-list__with-details {
+  .component-detail-view-table {
+    width: 45vw;
+    overflow: scroll;
+    display: block;
+
+    table {
+      width: max-content;
+      tbody {
+        tr {
+          td {
+            color: #000;
+            font-size: 14px;
+            span {
+              display: inline-block;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+      }
+    }
+  }
+}

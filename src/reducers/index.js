@@ -202,7 +202,18 @@ const selectedStaffReducer = (selectedStaff = {}, action) => {
   return selectedStaff;
 };
 
+const orderProductsListReducer = (orderProductsList = [], action) => {
+  if (action.type === actionTypes.fetchOrderProductsList) {
+    return action.payload.orders;
+  }
+  if (action.type === actionTypes.setPeriod) {
+    return action.payload.orderProductsList;
+  }
+  return orderProductsList;
+};
+
 export default combineReducers({
+  orderProductsList: orderProductsListReducer,
   selectedStaff: selectedStaffReducer,
   selectedCustomer: selectedCustomerReducer,
   userList: userListReducer,

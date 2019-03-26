@@ -7,7 +7,7 @@ import {
   onCustomerOrderListPageChange,
   searchingOrders,
   advSearchingOrders
-} from "../actions";
+} from "../../../actions";
 import CustomerOrderCard from "./CustomerOrderCard";
 import OrderDetail from "./OrderDetail";
 
@@ -36,10 +36,37 @@ class CustomerOrderList extends React.Component {
     }
     return "component-customer-order-list__without-details";
   };
+  renderThead = () => {
+    return (
+      <thead>
+        <tr>
+          <th className="text">
+            <span>订单号</span>
+          </th>
+          <th className="text">
+            <span>取货人</span>
+          </th>
+          <th className="text">
+            <span>取货时间</span>
+          </th>
+          <th className="text">
+            <span>产品明细</span>
+          </th>
+          <th className="text">
+            <span>订单状态</span>
+          </th>
+          <th className="number">
+            <span>订单总件数</span>
+          </th>
+        </tr>
+      </thead>
+    );
+  };
   render() {
     if (!this.props.paginationParams) {
       return <div className={this.getClass()}>loading...</div>;
     }
+    let index = 0;
     return (
       <React.Fragment>
         <div className={this.getClass()}>
@@ -75,15 +102,24 @@ class CustomerOrderList extends React.Component {
               activeLinkClass="link-item-active"
             />
           </div>
-          {this.props.orders.map((order, index) => {
-            return (
-              <CustomerOrderCard
-                showDetails={this.showDetails}
-                key={`customerOrder${index}`}
-                order={order}
-              />
-            );
-          })}
+          <div className="component-detail-view-table">
+            <table>
+              {this.renderThead()}
+              <tbody>
+                {this.props.orders.map(order => {
+                  index++;
+                  return (
+                    <CustomerOrderCard
+                      showDetails={this.showDetails}
+                      key={`customerOrder${index}`}
+                      index={index}
+                      order={order}
+                    />
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
 
         {this.state.showDetails ? (

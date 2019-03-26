@@ -18,10 +18,12 @@ const setPeriod = sales_group_id => {
       reportDetails,
       reportSummary,
       orders,
-      ordersByStore
+      ordersByStore,
+      orderProductsList
     } = getState();
 
-    const { pathname } = history.location;
+    const numberOfRootPath = process.env.PUBLIC_URL.length;
+    const pathname = history.location.pathname.substr(numberOfRootPath);
 
     if (pathname === "/charts") {
       const response = await kidsnparty.get(`/reports`, {
@@ -36,12 +38,13 @@ const setPeriod = sales_group_id => {
           reports: response.data.summary,
           report: reportDetails,
           orders,
-          ordersByStore
+          ordersByStore,
+          orderProductsList
         }
       });
     } else if (pathname === "/orders" || pathname === "/orders/products") {
-      const response = await kidsnparty.get(`/report`, {
-        params: { startDate, endDate, report_category: "product" }
+      const response = await kidsnparty.get(`/allorders`, {
+        params: { start_date, end_date, method: "products" }
       });
       dispatch({
         type: types.setPeriod,
@@ -49,9 +52,10 @@ const setPeriod = sales_group_id => {
           startDate: startDate,
           endDate: endDate,
           reports: reportSummary,
-          report: response.data,
+          report: reportDetails,
           orders,
-          ordersByStore
+          ordersByStore,
+          orderProductsList: response.data.orders
         }
       });
     } else if (pathname === "/orders/customers") {
@@ -69,7 +73,8 @@ const setPeriod = sales_group_id => {
           reports: reportSummary,
           report: reportDetails,
           orders: response.data.orders.data,
-          ordersByStore
+          ordersByStore,
+          orderProductsList
         }
       });
     } else if (pathname === "/orders/stores") {
@@ -88,7 +93,8 @@ const setPeriod = sales_group_id => {
           orders,
           ordersByStore: response.data.orders,
           report: reportDetails,
-          reports: reportSummary
+          reports: reportSummary,
+          orderProductsList
         }
       });
     } else {
@@ -103,7 +109,8 @@ const setPeriod = sales_group_id => {
           reports: reportSummary,
           report: response.data,
           orders,
-          ordersByStore
+          ordersByStore,
+          orderProductsList
         }
       });
     }

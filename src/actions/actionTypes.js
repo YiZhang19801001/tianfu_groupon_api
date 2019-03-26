@@ -34,7 +34,8 @@ const actionTypes = {
   setPeriod: "SET_PERIOD",
   fetchCustomer: "FETCH_CUSTOMER",
   userLogin: "USER_LOGIN",
-  fetchStaff: "FETCH_STAFF"
+  fetchStaff: "FETCH_STAFF",
+  fetchOrderProductsList: "FETCH_ORDER_PRODUCTS_LIST"
 };
 
 export default actionTypes;

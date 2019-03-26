@@ -1,39 +1,27 @@
 import React from "react";
-import { connect } from "react-redux";
 
-import { sortReportDetails, fetchProductOrderDetails } from "../../../actions";
+import { sorting } from "../../../helpers";
 import { getStyle } from "../../shared/helper";
 
-import "../../shared/sharedStyles.css";
-
 class TableView extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { product_name: 0, quantity: 0, total: 0 };
-  }
+  state = {
+    product_name: 0,
+    quantity: 0,
+    total: 0,
+    list: [],
+    showTable: false
+  };
 
   componentDidMount() {
-    this.props.fetchProductOrderDetails();
+    this.setState({ list: this.props.productsList });
   }
-  sortByProductName = () => {
-    const sortOrder = this.getSortOrder("product_name");
-    this.props.sortReportDetails(
-      "product_name",
-      sortOrder,
-      this.props.reportDetails
-    );
-  };
-  sortByTotal = () => {
-    const sortOrder = this.getSortOrder("total");
-    this.props.sortReportDetails("total", sortOrder, this.props.reportDetails);
-  };
-  sortByQuantity = () => {
-    const sortOrder = this.getSortOrder("quantity");
-    this.props.sortReportDetails(
-      "quantity",
-      sortOrder,
-      this.props.reportDetails
-    );
+  componentWillReceiveProps(newProps) {
+    this.setState({ list: newProps.productsList });
+  }
+  sort = value => {
+    const sortOrder = this.getSortOrder(value);
+    const result = sorting(value, sortOrder, this.state.list);
+    this.setState({ list: result });
   };
   getSortOrder = value => {
     let sortOrder = 0;
@@ -65,18 +53,33 @@ class TableView extends React.Component {
     return (
       <thead>
         <tr>
-          <th onClick={this.sortByProductName} className="text">
+          <th
+            onClick={() => {
+              this.sort("product_name");
+            }}
+            className="text"
+          >
             <span>
               产品名
               <i className="material-icons">{this.getIcon("product_name")}</i>
             </span>
           </th>
-          <th onClick={this.sortByTotal} className="number">
+          <th
+            onClick={() => {
+              this.sort("total");
+            }}
+            className="number"
+          >
             <span>
               销售额<i className="material-icons">{this.getIcon("total")}</i>
             </span>
           </th>
-          <th onClick={this.sortByQuantity} className="number">
+          <th
+            onClick={() => {
+              this.sort("quantity");
+            }}
+            className="number"
+          >
             <span>
               销售数量
               <i className="material-icons">{this.getIcon("quantity")}</i>
@@ -90,7 +93,7 @@ class TableView extends React.Component {
     let index = 0;
     return (
       <tbody>
-        {this.props.reportDetails.map(element => {
+        {this.state.list.map(element => {
           index++;
           const { product_name, total, quantity } = element;
           return (
@@ -105,23 +108,34 @@ class TableView extends React.Component {
     );
   };
   render() {
+    if (this.state.list.length === 0) {
+      return <div className="component-detail-view-table">loading...</div>;
+    }
     return (
       <div className="component-detail-view-table">
-        <table>
-          {this.renderThead()}
-
-          {this.renderTbody()}
-        </table>
+        <div
+          className="header"
+          onClick={() => {
+            this.setState({ showTable: !this.state.showTable });
+          }}
+          style={
+            this.state.showTable ? { borderBottom: `1px solid #a5a5a5` } : null
+          }
+        >
+          <h2>{this.state.list[0].store_name}</h2>
+          <i className="material-icons">
+            {this.state.showTable ? "keyboard_arrow_up" : "keyboard_arrow_down"}
+          </i>
+        </div>
+        {this.state.showTable ? (
+          <table>
+            {this.renderThead()}
+            {this.renderTbody()}
+          </table>
+        ) : null}
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ reportDetails }) => {
-  return { reportDetails };
-};
-
-export default connect(
-  mapStateToProps,
-  { sortReportDetails, fetchProductOrderDetails }
-)(TableView);
+export default TableView;

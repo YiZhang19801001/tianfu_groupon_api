@@ -2721,4 +2721,138 @@ body {
   box-shadow: 0 0 5px #a5a5a5;
 }
 
+.component-product-order-card {
+  display: flex;
+  margin-top: 10px;
+  width: 40vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+.component-product-order-card .content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.component-product-order-card .content .name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #727272;
+}
+.component-product-order-card .content .quantity {
+  font-weight: bold;
+  color: #b3b3b3;
+}
+.component-product-order-card .content .quantity .quantity__sold {
+  color: #ffba2d;
+}
+.component-product-order-card .process-bar {
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 15px;
+  position: relative;
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.component-product-order-card .process-bar .bar {
+  background-color: #ffba2d;
+  height: 15px;
+  border-top: 2px solid #e39e10;
+}
+
+.component-productorders__Bar-view {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  height: 90vw;
+  overflow: scroll;
+}
+.component-productorders__Bar-view .product-group {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px 30px 30px 30px;
+  align-items: baseline;
+  border-bottom: 0.7px solid #d4d4d4;
+}
+
+.main-window {
+  display: flex;
+  justify-content: flex-start;
+  width: 90vw;
+  height: 80vh;
+}
+.main-window .component-productorders {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  padding: 0 20px;
+}
+.main-window .component-productorders .control-button-group {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 5rem;
+}
+.main-window .component-productorders .control-button-group .material-icons {
+  font-size: 2rem;
+  color: #ffba2d;
+}
+.main-window .component-productorders .section {
+  border-radius: 5px;
+  border: 1px solid #a5a5a5;
+  margin-top: 20px;
+}
+.main-window .component-productorders .section .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+}
+.main-window .component-productorders .section .header h2 {
+  color: #8c8c8c;
+}
+.main-window .component-productorders .section .component-detail-view-table {
+  height: auto;
+}
+.main-window .component-productorders .section .component-detail-view-table table {
+  margin-bottom: 20px;
+}
+
+.component-customer-order-list__without-details .component-detail-view-table table tbody tr td {
+  color: #000;
+  font-size: 14px;
+}
+.component-customer-order-list__without-details .component-detail-view-table table tbody tr td span {
+  display: inline-block;
+  text-overflow: ellipsis;
+}
+
+.component-customer-order-list__with-details .component-detail-view-table {
+  width: 45vw;
+  overflow: scroll;
+  display: block;
+}
+.component-customer-order-list__with-details .component-detail-view-table table {
+  width: max-content;
+}
+.component-customer-order-list__with-details .component-detail-view-table table tbody tr td {
+  color: #000;
+  font-size: 14px;
+}
+.component-customer-order-list__with-details .component-detail-view-table table tbody tr td span {
+  display: inline-block;
+  text-overflow: ellipsis;
+}
+
 /*# sourceMappingURL=App.css.map */

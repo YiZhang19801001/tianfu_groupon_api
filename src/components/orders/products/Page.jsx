@@ -1,44 +1,39 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { getProducts } from "../../../actions";
+import { fetchOrderProductsList } from "../../../actions";
 import TableView from "./TableView";
-import BarView from "./BarView";
 
-import "./sass/Page.css";
 class Page extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { tableView: true };
-  }
   componentDidMount() {
-    this.props.getProducts();
+    this.props.fetchOrderProductsList();
   }
-  renderIconText = () => {
-    if (this.state.tableView) {
-      return "view_list";
-    }
-    return "table_chart";
-  };
+
   render() {
+    if (this.props.orderProductsList.length === 0) {
+      return <div className="component-productorders">loading...</div>;
+    }
     return (
       <div className="component-productorders">
-        {/* <div
-          className="control-button-group"
-          onClick={() => {
-            this.setState({ tableView: !this.state.tableView });
-          }}
-        >
-          <i className="material-icons">{this.renderIconText()}</i>
-        </div> */}
-        {this.state.tableView ? <TableView /> : <BarView />}
+        {this.props.orderProductsList.map(orderProductArray => {
+          return (
+            <div
+              className="section"
+              key={`orderProductsArray${orderProductArray[0].location_id}`}
+            >
+              <TableView productsList={orderProductArray} />
+            </div>
+          );
+        })}
       </div>
     );
   }
 }
 
+const mapStateToProps = ({ orderProductsList }) => {
+  return { orderProductsList };
+};
 export default connect(
-  null,
-  { getProducts }
+  mapStateToProps,
+  { fetchOrderProductsList }
 )(Page);

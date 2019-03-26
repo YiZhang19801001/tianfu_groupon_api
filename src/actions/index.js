@@ -63,6 +63,7 @@ export const onCustomerOrderListPageChange = Order.onPageChange;
 export const searchingOrders = Order.search;
 export const advSearchingOrders = Order.advSearch;
 export const fetchProductOrderDetails = Order.fetchbyProducts;
+export const fetchOrderProductsList = Order.fetchOrderProductsList;
 
 // shop actions
 export const fetchSingleShop = fetchShop;

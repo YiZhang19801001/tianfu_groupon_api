@@ -126,6 +126,19 @@ const fetchbyProducts = () => {
   };
 };
 
+const fetchOrderProductsList = () => {
+  return async function(dispatch, getState) {
+    const { startDate, endDate } = getState();
+    const response = await kidsnParty.get(`/allorders`, {
+      params: { start_date: startDate, end_date: endDate, method: "products" }
+    });
+    dispatch({
+      type: types.fetchOrderProductsList,
+      payload: response.data
+    });
+  };
+};
+
 export default {
   index,
   show,
@@ -136,5 +149,6 @@ export default {
   advSearch,
   fetchbyProducts,
   onPageChange,
-  fetchByStore
+  fetchByStore,
+  fetchOrderProductsList
 };

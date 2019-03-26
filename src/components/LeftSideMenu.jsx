@@ -7,7 +7,7 @@ const LeftSideMenu = () => {
   const getClass = path => {
     const numberOfRootPath = process.env.PUBLIC_URL.length;
     const historyPath = history.location.pathname.substr(numberOfRootPath);
-    console.log({ string: history.location.pathname, substr: historyPath });
+    // console.log({ string: history.location.pathname, substr: historyPath });
 
     const positionOfSecondSlash = historyPath.indexOf("/", 2);
     const compareString =

@@ -19,5 +19,26 @@
         color: #ffba2d;
       }
     }
+    .section {
+      border-radius: 5px;
+      border: 1px solid color("border");
+      margin-top: 20px;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        h2 {
+          color: color("textPrimary");
+        }
+      }
+      .component-detail-view-table {
+        height: auto;
+        table {
+          margin-bottom: 20px;
+        }
+      }
+    }
   }
 }

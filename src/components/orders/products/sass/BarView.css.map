@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,kCAAkC,CAAC;EACjC,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,QAAQ,EAAE,MAAM;CAUjB;;AAfD,AAME,kCANgC,CAMhC,cAAc,CAAC;EACb,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;EACf,eAAe,EAAE,aAAa;EAC9B,OAAO,EAAE,mBAAmB;EAC5B,WAAW,EAAE,QAAQ;EACrB,aAAa,EAAE,mBAAmB;CACnC",
-    "sources": [
-        "BarView.scss"
-    ],
-    "names": [],
-    "file": "BarView.css"
-}

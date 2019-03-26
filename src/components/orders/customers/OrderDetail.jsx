@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { makeDate } from "../helpers";
-import { updateOrderStatus } from "../actions";
+import { makeDate } from "../../../helpers";
+import { updateOrderStatus } from "../../../actions";
 
 class OrderDetail extends React.Component {
   getTheadColor = () => {
@@ -11,7 +11,6 @@ class OrderDetail extends React.Component {
         return `#ffba2d`;
       case 2:
         return `#f55747`;
-
       default:
         return `#a5a5a5`;
     }
