@@ -40,7 +40,9 @@ class CustomerOrderList extends React.Component {
     return (
       <thead>
         <tr>
-          <th />
+          <th className="placeholder">
+            <span />
+          </th>
           <th className="text">
             <span>订单号</span>
           </th>

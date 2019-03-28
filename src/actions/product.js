@@ -12,6 +12,10 @@ const index = product_status => {
   };
 };
 
+const setLocation = value => {
+  return { type: types.setNewProductStore, payload: value };
+};
+
 const show = id => {
   return async function(dispatch) {
     const response = await kidsnParty.get(`/products/${id}`);
@@ -24,7 +28,7 @@ const show = id => {
 const update = (product_id, file, isGroupon) => {
   return async function(dispatch, getState) {
     const product = getState().form.productForm.values;
-    const { options, category } = getState().newProduct;
+    const { options, category, location_id } = getState().newProduct;
     // How To:: add post headers for axios
     const headers = { language_id: 2 };
     const response = await kidsnParty.put(
@@ -33,6 +37,7 @@ const update = (product_id, file, isGroupon) => {
         product,
         category,
         options,
+        location_id,
         file,
         isGroupon
       },
@@ -56,10 +61,11 @@ const switchProductStatus = product => {
 const create = (file, isGroupon) => {
   return async function(dispatch, getState) {
     const product = getState().form.productForm.values;
-    const { options, category } = getState().newProduct;
+    const { options, category, location_id } = getState().newProduct;
     const response = await kidsnParty.post("/products", {
       product,
       isGroupon,
+      location_id,
       category,
       options,
       file
@@ -98,5 +104,6 @@ export default {
   switchProductStatus,
   create,
   removeOption,
-  search
+  search,
+  setLocation
 };

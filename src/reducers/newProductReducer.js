@@ -1,4 +1,5 @@
 import { actionTypes } from "../actions";
+import { types } from "util";
 
 const newProductReducer = (newProduct = {}, action) => {
   switch (action.type) {
@@ -26,6 +27,11 @@ const newProductReducer = (newProduct = {}, action) => {
         element => element.option_id !== action.payload
       );
       return { ...newProduct, options: newOptions };
+    case actionTypes.setNewProductStore:
+      return {
+        ...newProduct,
+        location_id: action.payload
+      };
     default:
       return newProduct;
   }

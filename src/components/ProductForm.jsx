@@ -5,6 +5,7 @@ import { Field, reduxForm } from "redux-form";
 
 import { fetchOptions, removeOptionsFromNewProduct } from "../actions";
 import ProductFormCategorySelector from "./ProductFormCategorySelector";
+import StoreSelector from "./StoreSelector";
 
 // import AddOptionToNewProductForm from "./AddOptionToNewProductForm";
 class EditForm extends React.Component {
@@ -204,6 +205,7 @@ class EditForm extends React.Component {
       </div>
     );
   };
+
   renderGrouponSwitch = () => {
     if (!this.state.isGroupon) {
       return (
@@ -268,9 +270,6 @@ class EditForm extends React.Component {
                       placeholder="单价,例如 12.80"
                       className="component-edit-form__button-group__input"
                     />
-                    {/* <span className="component-edit-form__button-group__label">
-                      澳元
-                    </span> */}
                   </label>
                 </div>
               </div>
@@ -288,12 +287,6 @@ class EditForm extends React.Component {
                       className="component-edit-form__button-group__input"
                       placeholder="数字越大产品显示越靠前"
                     />
-                    {/* <span className="component-edit-form__button-group__extra-label">
-                      <i className="material-icons">add</i>
-                    </span>
-                    <span className="component-edit-form__button-group__label">
-                      <i className="material-icons">remove</i>
-                    </span> */}
                   </label>
                 </div>
               </div>
@@ -315,6 +308,9 @@ class EditForm extends React.Component {
               </div>
             </div>
           </div>
+          <div className="component-edit-form__subtitle">联接产品到店铺</div>
+
+          <StoreSelector />
           {this.renderGrouponSwitch()}
           {this.renderGrouponControl()}
 
