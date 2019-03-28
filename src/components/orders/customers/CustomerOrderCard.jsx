@@ -15,6 +15,36 @@ class CustomerOrderCard extends React.Component {
       return value;
     }
   };
+
+  renderCheckBox = () => {
+    if (
+      parseInt(this.props.order.order_status_id) === 1 ||
+      parseInt(this.props.order.order_status_id) === 6
+    ) {
+      return null;
+    }
+
+    return (
+      <div
+        className="component-customer-order-card__check-button"
+        onClick={e => {
+          e.stopPropagation();
+        }}
+      >
+        <div className="roundedTwo">
+          <input
+            type="checkbox"
+            value="None"
+            id={`roundTwo${this.props.order.order_id}`}
+            name="check"
+            checked={this.getCheckedValue()}
+            onChange={this.handleOnChange}
+          />
+          <label htmlFor={`roundTwo${this.props.order.order_id}`} />
+        </div>
+      </div>
+    );
+  };
   /**
    * function: create different style css code according to order status
    * @param {void}
@@ -115,6 +145,7 @@ class CustomerOrderCard extends React.Component {
     const { sum, total, detailString } = makeOrderListTotal(order_items);
     return (
       <tr className={getClass(this.props.index)} onClick={this.selectOrder}>
+        <td>{this.renderCheckBox()}</td>
         <td>{invoice_no}</td>
         <td>{user.username}</td>
         <td>{fax}</td>

@@ -1171,7 +1171,6 @@
   width: 28px;
   height: 28px;
   position: relative;
-  margin: 20px auto;
   background: #fcfff4;
   background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
   border-radius: 50px;
@@ -1224,7 +1223,7 @@
   padding: 10px;
   background-color: #f5f6f8;
   height: 80vh;
-  overflow: scroll;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -1236,7 +1235,7 @@
   width: 90vw;
   padding: 10px;
   background-color: #f5f6f8;
-  height: 90vh;
+  height: 80vh;
   overflow: scroll;
   display: flex;
   flex-direction: column;
@@ -2829,9 +2828,15 @@ body {
   margin-bottom: 20px;
 }
 
+.component-customer-order-list__without-details .component-detail-view-table table tbody tr {
+  height: 35px;
+}
 .component-customer-order-list__without-details .component-detail-view-table table tbody tr td {
   color: #000;
   font-size: 14px;
+}
+.component-customer-order-list__without-details .component-detail-view-table table tbody tr td .component-customer-order-card__check-button {
+  margin-right: 10px;
 }
 .component-customer-order-list__without-details .component-detail-view-table table tbody tr td span {
   display: inline-block;
@@ -2846,9 +2851,15 @@ body {
 .component-customer-order-list__with-details .component-detail-view-table table {
   width: max-content;
 }
+.component-customer-order-list__with-details .component-detail-view-table table tbody tr {
+  height: 35px;
+}
 .component-customer-order-list__with-details .component-detail-view-table table tbody tr td {
   color: #000;
   font-size: 14px;
+}
+.component-customer-order-list__with-details .component-detail-view-table table tbody tr td .component-customer-order-card__check-button {
+  display: none;
 }
 .component-customer-order-list__with-details .component-detail-view-table table tbody tr td span {
   display: inline-block;
