@@ -1,92 +1,30 @@
 import React from "react";
-import { Route, Router, Switch } from "react-router-dom";
+import { Router } from "react-router-dom";
 import { history } from "../history";
-
+import { connect } from "react-redux";
+import { checkLogin } from "../actions";
 import LeftSideMenu from "./LeftSideMenu";
-import OrderManageMainWindow from "./OrderManageMainWindow";
-import ChartManageMainWindow from "./ChartManageMainWindow";
-import ShopManageMainWindow from "./ShopManageMainWindow";
-import Example from "./demo/propsFunctionalComponent";
-import CatalogManageMainWindow from "./CatalogManageMainWindow";
-import { Groupon } from "./groupon";
-import { UserManage } from "./user";
-import { PrivateRoute, Reject } from "./shared";
-import { Login } from "./auth";
+import Routes from "./routes";
+import { CheckLogin } from "./hooks";
 
 import "./App.css";
 
-const App = () => {
+const App = props => {
+  CheckLogin(props.checkLogin);
+
   return (
     <div className="app">
       <Router history={history}>
         <React.Fragment>
           <LeftSideMenu />
-
-          <Switch>
-            <PrivateRoute
-              path={`${process.env.PUBLIC_URL}/products`}
-              role={`accessProducts`}
-              component={CatalogManageMainWindow}
-            />
-            <PrivateRoute
-              path={`${process.env.PUBLIC_URL}/categories`}
-              role={`accessProducts`}
-              component={CatalogManageMainWindow}
-            />
-            <PrivateRoute
-              path={`${process.env.PUBLIC_URL}/options`}
-              role={`accessProducts`}
-              component={CatalogManageMainWindow}
-            />
-            <PrivateRoute
-              path={`${process.env.PUBLIC_URL}/orders`}
-              role={`accessOrders`}
-              component={OrderManageMainWindow}
-            />
-            <PrivateRoute
-              path={`${process.env.PUBLIC_URL}/shops`}
-              component={ShopManageMainWindow}
-              role={`accessSalesGroups`}
-            />
-            <PrivateRoute
-              path={`${process.env.PUBLIC_URL}/charts`}
-              role={`accessReports`}
-              component={ChartManageMainWindow}
-            />
-            <Route
-              path={`${process.env.PUBLIC_URL}/example`}
-              name="roben"
-              component={Example}
-            />
-            <PrivateRoute
-              path={`${process.env.PUBLIC_URL}/customer`}
-              role={`accessAccounts`}
-              component={UserManage}
-            />
-            <PrivateRoute
-              path={`${process.env.PUBLIC_URL}/staff`}
-              role={`accessAccounts`}
-              component={UserManage}
-            />
-            <PrivateRoute
-              path={`${process.env.PUBLIC_URL}/groupon`}
-              component={Groupon}
-              role={`accessSalesGroups`}
-            />
-            <Route
-              exact
-              path={`${process.env.PUBLIC_URL}/`}
-              component={Login}
-            />
-            <Route
-              path={`${process.env.PUBLIC_URL}/reject`}
-              component={Reject}
-            />
-          </Switch>
+          <Routes />
         </React.Fragment>
       </Router>
     </div>
   );
 };
 
-export default App;
+export default connect(
+  null,
+  { checkLogin }
+)(App);

@@ -111,6 +111,7 @@ export const setPeriod = App.setPeriod;
 
 // Auth actions
 export const userLogin = Auth.login;
+export const checkLogin = Auth.check;
 
 // export action types
 export const actionTypes = types;
