@@ -17,9 +17,7 @@ const check = () => {
   return { type: types.userLogin, payload: user };
 };
 
-const login = () => async (dispatch, getState) => {
-  const requestBody = getState().form.loginForm.values;
-
+const login = requestBody => async (dispatch, getState) => {
   const response = await kidsnparty.post("user/login", requestBody);
 
   if (response.data.success) {

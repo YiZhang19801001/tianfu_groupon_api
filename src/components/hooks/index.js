@@ -1,3 +1,3 @@
-import { CheckLogin } from "./useUser";
+import { CheckLogin, userLogin } from "./useUser";
 import { useSalesGroups } from "./useDate";
-export { CheckLogin, useSalesGroups };
+export { CheckLogin, useSalesGroups, userLogin };

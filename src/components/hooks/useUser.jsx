@@ -5,3 +5,7 @@ export const CheckLogin = cb => {
     cb();
   }, []);
 };
+
+export const userLogin = (values, cb) => {
+  cb(values);
+};

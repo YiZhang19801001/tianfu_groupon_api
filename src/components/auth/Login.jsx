@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { userLogin } from "../../actions";
 import LoginForm from "./LoginForm";
 const Login = ({ userLogin }) => {
-  const onSubmit = () => {
-    userLogin();
+  const onSubmit = values => {
+    userLogin(values);
   };
   return (
     <div className="login-page">
