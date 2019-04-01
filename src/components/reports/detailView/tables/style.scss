@@ -6,6 +6,10 @@
   justify-content: flex-start;
   align-items: center;
   overflow: scroll;
+  @include mobile {
+    height: auto;
+    align-items: flex-start;
+  }
 }
 .component-detail-view-table .material-icons {
   transition: all 600ms ease;
@@ -24,6 +28,9 @@
   margin-top: 20px;
   width: 80%;
   border-spacing: 0;
+  @include mobile {
+    width: max-content;
+  }
 }
 
 .component-detail-view-table td.text,

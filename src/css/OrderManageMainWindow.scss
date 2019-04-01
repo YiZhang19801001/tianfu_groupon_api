@@ -23,4 +23,8 @@ body {
 .main-window {
   display: flex;
   justify-content: flex-start;
+  @include mobile {
+    height: 75vh;
+    width: 100vw;
+  }
 }

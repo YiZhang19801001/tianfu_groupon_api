@@ -38,6 +38,9 @@
     margin-top: 20px;
     width: 80%;
     border-spacing: 0;
+    @include mobile {
+      width: 100%;
+    }
     tr {
       height: 30px;
     }
@@ -53,7 +56,10 @@
     }
     &.number {
       text-align: right;
-      padding-left: 15px;
+      // padding-left: 15px;
+    }
+    @include mobile {
+      padding-right: 5px;
     }
   }
   thead {

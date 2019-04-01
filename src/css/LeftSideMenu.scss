@@ -5,19 +5,68 @@
   align-items: center;
   width: 10vw;
   background-color: #030303;
+  @include mobile {
+    flex-direction: row;
+    width: 100vw;
+    height: 15vh;
+  }
+  .control-pannel {
+    background-color: color("bodyBackground");
+    width: 9vw;
+    height: 15vh;
+    position: absolute;
+    top: 10vh;
+    left: 5vw;
+    border-radius: 5px;
+    box-shadow: 0 0 6px color("border");
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    @include mobile {
+      width: 30vw;
+    }
+    button {
+      background-color: color("main");
+      height: 35px;
+      border: 1px solid color("bodyBackground");
+      width: 90%;
+      box-shadow: 0 0 3px color("main");
+      border-radius: 5px;
+      @include mobile {
+        border-radius: 3px;
+      }
+      &.logout {
+        background-color: color("secondary");
+      }
+    }
+  }
 }
 .component-left-side-menu__icon {
   display: flex;
   justify-content: center;
+  @include mobile {
+    width: 60px;
+  }
 }
 .component-left-side-menu__icon img {
   transform: scale(0.8);
   border-radius: 50%;
+  @include mobile {
+    transform: scale(0.4);
+  }
 }
 
 .component-left-side-menu__menu {
   color: white;
   margin-bottom: 50px;
+  @include mobile {
+    margin-bottom: 0;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    margin-right: 10px;
+  }
 }
 .component-left-side-menu__item {
   display: flex;
@@ -26,17 +75,15 @@
   height: 100px;
   color: white;
   text-decoration: none;
-}
-
-.component-left-side-menu__item .material-icons {
-  font-size: 36px;
-  margin-bottom: 5px;
-}
-.component-left-side-menu__item.active {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100px;
-  color: #ffba2d;
-  text-decoration: none;
+  &.active {
+    color: color("main");
+  }
+  .material-icons {
+    font-size: 36px;
+    margin-bottom: 5px;
+  }
+  @include mobile {
+    height: auto;
+    font-size: 12px;
+  }
 }

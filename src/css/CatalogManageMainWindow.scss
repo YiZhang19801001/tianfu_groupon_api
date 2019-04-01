@@ -2,4 +2,8 @@
   width: 90vw;
   height: 100vh;
   overflow: scroll;
+  @include mobile {
+    width: 100vw;
+    height: 85vh;
+  }
 }

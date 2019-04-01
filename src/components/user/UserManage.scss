@@ -1,5 +1,3 @@
-@import "../shared/variables.scss";
-
 .component-customer-manage {
   width: calc(90vw - 20px);
   height: 90vh;
@@ -9,7 +7,13 @@
   overflow: scroll;
   padding: 0 10px;
   flex-direction: column;
+  @include mobile {
+    width: 100vw;
+  }
   .component-table {
+    @include mobile {
+      width: 100vw;
+    }
     &.user {
       align-items: flex-start;
     }
@@ -29,6 +33,9 @@
     justify-content: center;
     align-items: flex-end;
     border-bottom: 3px solid #d8d8d8;
+    @include mobile {
+      width: 100vw;
+    }
     a {
       text-decoration: none;
       color: #030303;
@@ -54,6 +61,10 @@
   left: 10vw;
   position: fixed;
   background-color: color("cover");
+  @include mobile {
+    width: 100vw;
+    left: 0;
+  }
   form {
     width: 60%;
     padding: 20px;
@@ -64,12 +75,19 @@
     border: 1px solid color("border");
     background-color: color("bodyBackground");
     border-radius: 5px;
+    overflow: scroll;
+    @include mobile {
+      width: 95%;
+      height: 85%;
+      padding: 5px;
+    }
     .form-field {
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
       margin-bottom: 20px;
+
       select {
         width: 80%;
         height: 35px;

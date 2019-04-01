@@ -5,6 +5,9 @@
   align-items: flex-start;
   width: 45vw;
   padding: 10px;
+  @include mobile {
+    width: 100%;
+  }
 }
 
 .component-order-detail table td {

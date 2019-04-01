@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { sortReportDetails } from "../../../../actions";
 import { getStyle } from "./helper";
-import "./style.css";
+
 import { makeDate } from "../../../../helpers";
 
 class DateTable extends React.Component {

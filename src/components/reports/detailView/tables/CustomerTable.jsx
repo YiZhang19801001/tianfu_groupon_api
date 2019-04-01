@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 import { sortReportDetails } from "../../../../actions";
 import { getStyle } from "./helper";
-import "./style.css";
 
 class Customer extends React.Component {
   constructor(props) {

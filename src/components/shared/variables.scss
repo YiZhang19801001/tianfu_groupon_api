@@ -37,3 +37,10 @@ $animations: (
 @function animation($animation_name) {
   @return map-get($animations, $animation_name);
 }
+
+$mobile: 450px;
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}

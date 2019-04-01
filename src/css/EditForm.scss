@@ -8,6 +8,9 @@
   justify-content: space-between;
   padding: 5px 20px;
   align-items: center;
+  @include mobile {
+    padding: 5px;
+  }
 }
 .component-edit-form__bar {
   display: flex;
@@ -173,6 +176,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @include mobile {
+    flex-direction: column;
+    width: 100%;
+    .component-edit-form__left {
+      width: 100%;
+      .component-edit-form__form-field-group {
+        width: 100%;
+        .component-edit-form__button-group__wrapper {
+          width: 100%;
+          .form-field {
+            width: 100%;
+            input {
+              width: 90%;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 .groupon-switch__on,
 .groupon-switch__off {

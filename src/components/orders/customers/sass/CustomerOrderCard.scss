@@ -25,6 +25,9 @@
     width: 45vw;
     overflow: scroll;
     display: block;
+    @include mobile {
+      display: none;
+    }
 
     table {
       width: max-content;

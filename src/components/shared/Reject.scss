@@ -5,10 +5,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @include mobile {
+    width: 100vw;
+    height: 85vh;
+  }
   img {
     border-radius: 3px;
   }
   h3 {
     color: color("textPrimary");
+    @include mobile {
+      text-align: center;
+    }
   }
 }

@@ -12,5 +12,11 @@
     border-radius: 3px;
     color: #8c8c8c;
     font-size: 1.2rem;
+    @include mobile {
+      font-size: 12px;
+    }
+  }
+  @include mobile {
+    height: 5vh;
   }
 }

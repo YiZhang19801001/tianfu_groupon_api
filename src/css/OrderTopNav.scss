@@ -5,15 +5,18 @@
   justify-content: center;
   align-items: flex-end;
   border-bottom: 3px solid #d8d8d8;
-}
-.component-order-top-nav a {
-  text-decoration: none;
-  color: #030303;
-  font-weight: bold;
-  margin: 1px 5px;
-}
-
-.component-order-top-nav a.active {
-  margin: -3px 5px;
-  border-bottom: 3px solid #ffba2d;
+  a {
+    text-decoration: none;
+    color: #030303;
+    font-weight: bold;
+    margin: 1px 5px;
+    &.active {
+      margin: -3px 5px;
+      border-bottom: 3px solid color("main");
+    }
+  }
+  @include mobile {
+    height: 5vh;
+    width: 100vw;
+  }
 }

@@ -5,6 +5,9 @@
   align-items: flex-end;
   height: 7vh;
   border-bottom: 3px solid #d8d8d8;
+  @include mobile {
+    height: 5vh;
+  }
 }
 .component-catalog-top-menu__link {
   text-decoration: none;
