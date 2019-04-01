@@ -9,3 +9,8 @@ export const CheckLogin = cb => {
 export const userLogin = (values, cb) => {
   cb(values);
 };
+
+export const userLogout = () => {
+  localStorage.removeItem("tianfu_groupon_user");
+  window.location.reload();
+};
