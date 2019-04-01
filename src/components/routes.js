@@ -64,7 +64,7 @@ const Routes = () => {
         component={Groupon}
         role={`accessSalesGroups`}
       />
-      <Route exact path={`${process.env.PUBLIC_URL}/`} component={Login} />
+      <Route exact path={`${process.env.PUBLIC_URL}/login`} component={Login} />
       <Route path={`${process.env.PUBLIC_URL}/reject`} component={Reject} />
     </Switch>
   );

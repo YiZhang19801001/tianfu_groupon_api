@@ -85,3 +85,19 @@ export const makeOrderListTotal = list => {
   total = total.toFixed(2);
   return { sum, total, detailString };
 };
+
+export const makeDateInputValue = value => {
+  const dt = new Date(value);
+  console.log({ dt });
+
+  const day = dt.getDate();
+  const month = dt.getMonth() + 1;
+
+  const year = dt.getFullYear();
+
+  return `${year}-${paddingZero(month)}-${paddingZero(day)}`;
+};
+
+const paddingZero = value => {
+  return value > 9 ? value : `0${value}`;
+};

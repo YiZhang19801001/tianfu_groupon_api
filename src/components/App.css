@@ -75,9 +75,10 @@
   width: 100%;
   border-bottom: 2px solid #a5a5a5;
   height: 10vh;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   display: flex;
+  padding: 0 10px;
 }
 .component-sales-group-selector select {
   height: 60%;

@@ -108,6 +108,8 @@ export const updateSalesGroup = SalesGroup.update;
 
 // app actions
 export const setPeriod = App.setPeriod;
+export const setGlobalStartDate = App.setStartDate;
+export const setGlobalEndDate = App.setEndDate;
 
 // Auth actions
 export const userLogin = Auth.login;

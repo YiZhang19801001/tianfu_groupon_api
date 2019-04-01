@@ -3,9 +3,7 @@ import { kidsnparty } from "../apis";
 import { history } from "../history";
 
 const check = () => {
-  console.log("worked");
-
-  const user = JSON.parse(localStorage.getItem("guoli_groupon_user"));
+  const user = JSON.parse(localStorage.getItem("tianfu_groupon_user"));
 
   //if user not exist OR user is not a staff return to login page
   if (!user || parseInt(user.user_group_id) !== 3) {
@@ -26,7 +24,7 @@ const login = () => async (dispatch, getState) => {
 
   if (response.data.success) {
     localStorage.setItem(
-      "beautifulfruit_admin_user",
+      "tianfu_groupon_user",
       JSON.stringify(response.data.data)
     );
     dispatch({ type: types.userLogin, payload: response.data.data });

@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 
-const checkLogin = cb => {
+export const useSalesGroups = cb => {
   useEffect(() => {
     cb();
   }, []);
 };
-
-export default checkLogin;
