@@ -100,6 +100,7 @@
 @media (max-width: 450px) {
   .component-sales-group-selector select {
     font-size: 12px;
+    width: 20%;
   }
 }
 @media (max-width: 450px) {
@@ -134,7 +135,7 @@
   }
 }
 
-.component-date-picker {
+.component-sales-group-selector .component-date-picker {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -142,17 +143,33 @@
   justify-content: space-between;
   align-items: center;
 }
-.component-date-picker label {
+@media (max-width: 450px) {
+  .component-sales-group-selector .component-date-picker {
+    width: 75%;
+    flex-direction: row;
+  }
+}
+.component-sales-group-selector .component-date-picker label {
   display: inline-flex;
   width: 200px;
   justify-content: space-between;
   align-items: center;
 }
-.component-date-picker label span {
+@media (max-width: 450px) {
+  .component-sales-group-selector .component-date-picker label {
+    width: 50%;
+  }
+}
+.component-sales-group-selector .component-date-picker label span {
   font-size: 14px;
   color: #8c8c8c;
 }
-.component-date-picker label input {
+@media (max-width: 450px) {
+  .component-sales-group-selector .component-date-picker label span {
+    font-size: 10px;
+  }
+}
+.component-sales-group-selector .component-date-picker label input {
   border-radius: 3px;
   border: 1px solid #a5a5a5;
 }

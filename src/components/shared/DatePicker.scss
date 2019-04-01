@@ -1,18 +1,28 @@
-.component-date-picker {
+.component-sales-group-selector .component-date-picker {
   display: flex;
   flex-direction: column;
   height: 100%;
   padding: 10px 0;
   justify-content: space-between;
   align-items: center;
+  @include mobile {
+    width: 75%;
+    flex-direction: row;
+  }
   label {
     display: inline-flex;
     width: 200px;
     justify-content: space-between;
     align-items: center;
+    @include mobile {
+      width: 50%;
+    }
     span {
       font-size: 14px;
       color: color("textPrimary");
+      @include mobile {
+        font-size: 10px;
+      }
     }
     input {
       border-radius: 3px;
