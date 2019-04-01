@@ -103,6 +103,29 @@
   color: #8c8c8c;
 }
 
+.component-date-picker {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px 0;
+  justify-content: space-between;
+  align-items: center;
+}
+.component-date-picker label {
+  display: inline-flex;
+  width: 200px;
+  justify-content: space-between;
+  align-items: center;
+}
+.component-date-picker label span {
+  font-size: 14px;
+  color: #8c8c8c;
+}
+.component-date-picker label input {
+  border-radius: 3px;
+  border: 1px solid #a5a5a5;
+}
+
 .component-customer-manage {
   width: calc(90vw - 20px);
   height: 90vh;

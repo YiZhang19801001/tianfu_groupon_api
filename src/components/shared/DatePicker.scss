@@ -1,0 +1,22 @@
+.component-date-picker {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px 0;
+  justify-content: space-between;
+  align-items: center;
+  label {
+    display: inline-flex;
+    width: 200px;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      font-size: 14px;
+      color: color("textPrimary");
+    }
+    input {
+      border-radius: 3px;
+      border: 1px solid color("border");
+    }
+  }
+}
