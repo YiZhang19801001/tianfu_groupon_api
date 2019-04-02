@@ -60,6 +60,8 @@ export const updateOrder = Order.update;
 export const updateOrderStatus = Order.patch;
 export const markingOrder = Order.marking;
 export const fetchOrdersByStore = Order.fetchByStore;
+
+export const fetchOrderBySingleStore = Order.fetchBySingleStore;
 export const onCustomerOrderListPageChange = Order.onPageChange;
 export const searchingOrders = Order.search;
 export const advSearchingOrders = Order.advSearch;

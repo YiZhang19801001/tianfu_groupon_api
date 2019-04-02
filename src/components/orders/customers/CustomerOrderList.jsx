@@ -6,10 +6,13 @@ import {
   getOrders,
   onCustomerOrderListPageChange,
   searchingOrders,
-  advSearchingOrders
+  advSearchingOrders,
+  getShops,
+  fetchOrderBySingleStore
 } from "../../../actions";
 import CustomerOrderCard from "./CustomerOrderCard";
 import OrderDetail from "./OrderDetail";
+import StoreSelector from "./StoreSelector";
 
 class CustomerOrderList extends React.Component {
   constructor(props) {
@@ -36,6 +39,7 @@ class CustomerOrderList extends React.Component {
     }
     return "component-customer-order-list__without-details";
   };
+
   renderThead = () => {
     return (
       <thead>
@@ -88,6 +92,11 @@ class CustomerOrderList extends React.Component {
               }}
               placeholder={"按订单中的商品名搜索,速度慢,慎用"}
             />
+            <StoreSelector
+              getShops={this.props.getShops}
+              shops={this.props.shops}
+              setStoreForReports={this.props.fetchOrderBySingleStore}
+            />
             <Pagination
               activePage={this.props.paginationParams.current_page}
               itemsCountPerPage={this.props.paginationParams.per_page}
@@ -133,8 +142,8 @@ class CustomerOrderList extends React.Component {
   }
 }
 
-const mapStateToProps = ({ orders, paginationParams }) => {
-  return { orders, paginationParams };
+const mapStateToProps = ({ orders, paginationParams, shops }) => {
+  return { orders, paginationParams, shops };
 };
 
 export default connect(
@@ -143,6 +152,8 @@ export default connect(
     getOrders,
     onCustomerOrderListPageChange,
     searchingOrders,
-    advSearchingOrders
+    advSearchingOrders,
+    getShops,
+    fetchOrderBySingleStore
   }
 )(CustomerOrderList);

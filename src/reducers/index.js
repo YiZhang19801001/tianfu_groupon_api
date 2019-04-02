@@ -48,6 +48,8 @@ const ordersReducer = (orders = [], action) => {
     return action.payload.orders.data;
   } else if (action.type === actionTypes.setPeriod) {
     return action.payload.orders;
+  } else if (action.type === actionTypes.fetchOrderBySingleStore) {
+    return action.payload.orders;
   }
   return orders;
 };
@@ -211,8 +213,17 @@ const orderProductsListReducer = (orderProductsList = [], action) => {
   }
   return orderProductsList;
 };
+const locationIdReducer = (locationId = "", action) => {
+  switch (action.type) {
+    case actionTypes.fetchOrderBySingleStore:
+      return action.payload.location_id;
 
+    default:
+      return locationId;
+  }
+};
 export default combineReducers({
+  locationId: locationIdReducer, //*use for filter customer orders list
   orderProductsList: orderProductsListReducer,
   selectedStaff: selectedStaffReducer,
   selectedCustomer: selectedCustomerReducer,

@@ -36,7 +36,8 @@ const actionTypes = {
   userLogin: "USER_LOGIN",
   fetchStaff: "FETCH_STAFF",
   fetchOrderProductsList: "FETCH_ORDER_PRODUCTS_LIST",
-  setNewProductStore: "SET_NEW_PRODUCT_STORE"
+  setNewProductStore: "SET_NEW_PRODUCT_STORE",
+  fetchOrderBySingleStore: "FETCH_ORDER_BY_SINGLE_STORE"
 };
 
 export default actionTypes;
