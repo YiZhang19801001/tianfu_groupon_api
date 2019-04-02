@@ -1513,17 +1513,18 @@
     justify-content: center;
   }
 }
-
-.component-customer-order-list__pagination__container input {
+.component-customer-order-list__pagination__container input,
+.component-customer-order-list__pagination__container select {
   font-size: 14px;
-  width: 30%;
+  width: 22%;
   height: 40px;
   border-radius: 5px;
   border: 1px solid #d8d8d8;
   padding: 0px 10px;
 }
 @media (max-width: 450px) {
-  .component-customer-order-list__pagination__container input {
+  .component-customer-order-list__pagination__container input,
+.component-customer-order-list__pagination__container select {
     display: none;
   }
 }
