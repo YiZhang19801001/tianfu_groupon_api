@@ -87,6 +87,23 @@ const fetchByStore = () => {
     dispatch({ type: types.fetchOrdersByStore, payload: response.data.orders });
   };
 };
+const fetchBySingleStore = location_id => async (dispatch, getState) => {
+  const { startDate, endDate } = getState();
+  const start_date = startDate;
+  const end_date = endDate;
+  const response = await kidsnParty.get(`allorders`, {
+    params: {
+      method: "all",
+      start_date,
+      end_date,
+      location_id
+    }
+  });
+  dispatch({
+    type: types.fetchOrderBySingleStore,
+    payload: { orders: response.data.orders.data, location_id }
+  });
+};
 const search = search_string => {
   return async function(dispatch, getState) {
     const { startDate, endDate } = getState();
@@ -156,5 +173,6 @@ export default {
   fetchbyProducts,
   onPageChange,
   fetchByStore,
+  fetchBySingleStore,
   fetchOrderProductsList
 };
