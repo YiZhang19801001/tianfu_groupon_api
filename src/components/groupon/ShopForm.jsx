@@ -5,6 +5,7 @@ import SetTimeForm from "./SetTimeForm";
 
 import { makeDate } from "../../helpers";
 import "react-datepicker/dist/react-datepicker.css";
+import ShopOpenDate from "./ShopOpenDate";
 
 class ShopForm extends React.Component {
   state = { showTimeForm: false };
@@ -20,12 +21,6 @@ class ShopForm extends React.Component {
   };
   handleDateChange = formValues => {
     const newDate = formValues;
-
-    // if (
-    //   newDate.getHours() !== this.state.startDate.getHours() ||
-    //   newDate.getMinutes() !== this.state.startDate.getMinutes() ||
-    //   newDate.getSeconds() !== this.state.startDate.getSeconds()
-    // ) {
     this.props.handleDateChange(newDate);
     this.setState({ showTimeForm: false });
   };
@@ -53,39 +48,7 @@ class ShopForm extends React.Component {
       );
     });
   };
-  renderOpenDateTime = () => {
-    const { open_date, open_time, close_time } = this.props.shop.open;
-    if (!open_date) {
-      return (
-        <span className="tag-container">
-          <span className="open-date-tags">没有设置日期和时间</span>
-          <span
-            className="tag-dismiss"
-            onClick={() => {
-              this.setState({ showTimeForm: true });
-            }}
-          >
-            <i className="material-icons">edit</i>
-          </span>
-        </span>
-      );
-    }
-    return (
-      <span className="tag-container">
-        <span className="open-date-tags">
-          {makeDate(open_date)}: {open_time} -- {close_time}
-        </span>
-        <span
-          className="tag-dismiss"
-          onClick={() => {
-            this.props.handleDateChange({});
-          }}
-        >
-          <i className="material-icons">clear</i>
-        </span>
-      </span>
-    );
-  };
+  renderOpenDateTime = date => {};
   getCalendarDayClass = () => {
     return "calendar__day";
   };
@@ -94,15 +57,6 @@ class ShopForm extends React.Component {
     this.props.onSubmit();
   };
   render() {
-    // if (!this.props.shop) {
-    //   return <div className="component-shop-form">loading...</div>;
-    // }
-    // const highlightDates = this.props.shop
-    //   ? this.props.shop.open.map(element => {
-    //       return new Date(element);
-    //     })
-    //   : [];
-
     return (
       <div className="shop-form">
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
@@ -133,17 +87,6 @@ class ShopForm extends React.Component {
           }}
           className="component-shop-form__date-picker__label"
         >
-          {/* <DatePicker
-            dayClassName={this.getCalendarDayClass}
-            selected={this.state.startDate}
-            onChange={this.handleDateChange}
-            highlightDates={highlightDates}
-            shouldCloseOnSelect={false}
-            showTimeSelect
-            dateFormat="MMMM d, yyyy h:mm aa"
-            withPortal
-          /> */}
-
           <span className="component-shop-form__date-picker__title">
             请选择可以取货的日期
           </span>
@@ -152,13 +95,22 @@ class ShopForm extends React.Component {
         {this.state.showTimeForm ? (
           <SetTimeForm
             onSubmit={this.handleDateChange}
-            initialValues={this.props.shop.open}
+            // initialValues={this.props.shop.open}
             close={() => {
               this.setState({ showTimeForm: false });
             }}
           />
         ) : null}
-        <div className="open-dates__list">{this.renderOpenDateTime()}</div>
+        <div className="open-dates__list">
+          {this.props.shop.open.map(date => {
+            return (
+              <ShopOpenDate
+                date={date}
+                key={`${date.open_date}${date.close_time}${date.open_time}`}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }

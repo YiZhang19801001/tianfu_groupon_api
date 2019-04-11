@@ -6,7 +6,7 @@ const PrivateRoute = ({ component: Component, role: role, ...rest }) => (
     {...rest}
     render={props => {
       const currentUser = JSON.parse(
-        localStorage.getItem("beautifulfruit_admin_user")
+        localStorage.getItem("tianfu_groupon_user")
       );
       if (!currentUser) {
         return (

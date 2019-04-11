@@ -37,7 +37,8 @@ const actionTypes = {
   fetchStaff: "FETCH_STAFF",
   fetchOrderProductsList: "FETCH_ORDER_PRODUCTS_LIST",
   setNewProductStore: "SET_NEW_PRODUCT_STORE",
-  fetchOrderBySingleStore: "FETCH_ORDER_BY_SINGLE_STORE"
+  fetchOrderBySingleStore: "FETCH_ORDER_BY_SINGLE_STORE",
+  dismissDate: "DISMISS_DATE"
 };
 
 export default actionTypes;

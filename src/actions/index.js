@@ -74,6 +74,7 @@ export const changeSelectedShop = Shop.patch;
 export const createShop = Shop.create;
 export const updateShop = Shop.update;
 export const handleDateChange = Shop.handleDateChange;
+export const handleDismissDate = Shop.dismissDate;
 export const getShops = Shop.index;
 export const inactiveShop = Shop.remove;
 export const activeShop = Shop.active;
