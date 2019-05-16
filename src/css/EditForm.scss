@@ -26,7 +26,18 @@
   justify-content: space-between;
   align-items: center;
 }
-
+.edit-form {
+  select {
+    margin-bottom: 2px;
+    padding: 0px 10px;
+    border: none;
+    background-color: #fff;
+    height: 2rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    outline: none;
+  }
+}
 .edit-form input[type="text"] {
   margin-bottom: 2px;
   padding: 0px 10px;

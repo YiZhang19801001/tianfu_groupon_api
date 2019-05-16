@@ -12,7 +12,11 @@ class StoreSelector extends React.Component {
 
   renderOptions = () => {
     if (this.props.shops.length === 0) {
-      return <option value="text_label">没有可选择的店铺</option>;
+      return (
+        <option value="text_label" disabled={true}>
+          没有可选择的店铺
+        </option>
+      );
     }
     return (
       <>
