@@ -171,7 +171,7 @@
 }
 .component-sales-group-selector .component-date-picker label input {
   border-radius: 3px;
-  border: 1px solid #a5a5a5;
+  border: 1px solid #a5a5a540;
 }
 
 .component-log-out {
@@ -233,6 +233,183 @@
   .component-log-out .control-panel .button-group button {
     border-radius: 3px;
   }
+}
+
+.component-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+  margin: 50px auto;
+}
+
+.component-form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.component-form__input::placeholder {
+  font-size: 12px;
+}
+
+.component-form__form-field .material-icons {
+  color: #7c7c7c;
+  flex: 1;
+  margin-left: 4px;
+}
+
+.component-form__form-field {
+  display: flex;
+  border-radius: 20px;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  background-color: #f6f6f6;
+  width: 80vw;
+  position: relative;
+}
+.component-form__form-field.error {
+  background-color: #f98c8133;
+}
+.component-form__form-field .placeholder-label {
+  position: absolute;
+  font-size: 0.7rem;
+  left: 36px;
+}
+.component-form__form-field .placeholder-label.input-not-empty {
+  top: 0;
+}
+.component-form__form-field .placeholder-label.error {
+  color: #f55747;
+}
+.component-form__form-field .component-form__input {
+  display: flex;
+  border: none;
+  flex: 9;
+  padding: 0px 10px;
+  outline: none;
+  font-size: 1rem;
+  color: #3b3b3b;
+  z-index: 50;
+  margin-top: 0.5rem;
+  background-color: transparent;
+}
+.component-form__form-field .component-form__input:focus ~ label {
+  top: 0;
+}
+
+.component-form__input-container {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.component-form__submit-button {
+  border: 1px solid #ffba2d;
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #ffba2d;
+  font-weight: bold;
+  outline: none;
+}
+
+table {
+  width: 100%;
+  max-height: 100%;
+  overflow: scroll;
+  border-spacing: 0;
+  margin-top: 0.5rem;
+}
+table thead tr th {
+  padding-bottom: 0.8rem;
+}
+table thead tr th .th-content-container {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  text-transform: capitalize;
+  font-weight: 300;
+  border-bottom: 2px solid #ffba2d;
+}
+table thead tr th .th-content-container .th-title {
+  margin-right: 0.2rem;
+}
+table thead tr th .th-content-container .th-symbol {
+  height: 1rem;
+}
+table thead tr th .th-content-container .th-symbol.decrease img {
+  transform: rotateZ(180deg);
+}
+table thead tr th .th-content-container .th-symbol img {
+  height: 100%;
+}
+table thead tr th.number {
+  padding-left: 0.2rem;
+}
+table thead tr th.number .th-content-container {
+  justify-content: flex-end;
+}
+table thead tr th.text {
+  padding-right: 0.2rem;
+}
+table thead tr th.text .th-content-container {
+  justify-content: flex-start;
+  padding-left: 1.8rem;
+}
+table tbody tr.colored.striped {
+  background-color: #b5b4b41a;
+}
+table tbody tr.striped td {
+  border: none;
+}
+table tbody tr.total {
+  font-weight: bold;
+}
+table tbody tr.total td span {
+  width: 60%;
+  display: inline-block;
+  border-top: 2px solid #ffba2d;
+}
+table tbody tr td {
+  padding: 0.8rem 0;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #a5a5a540;
+}
+table tbody tr td img {
+  height: 4rem;
+  width: 6rem;
+  border-radius: 5px;
+}
+table tbody tr td.number {
+  text-align: right;
+  padding-left: 0.2rem;
+}
+table tbody tr td.number .symbol {
+  font-size: 0.8rem;
+  display: inline-block;
+  margin-right: 2px;
+}
+table tbody tr td.text {
+  text-align: left;
+  padding-right: 0.2rem;
+}
+table tbody tr td.text .payment-method-symbol {
+  display: inline-block;
+  height: 0.8rem;
+  width: 0.8rem;
+  border-radius: 50%;
+  border: 2px solid;
+  margin-right: 1rem;
+}
+table tbody tr td.text .placeholder {
+  display: inline-block;
+  height: 0.8rem;
+  width: 0.8rem;
+  margin-right: 1rem;
 }
 
 .component-customer-manage {
@@ -321,7 +498,7 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  border: 1px solid #a5a5a5;
+  border: 1px solid #a5a5a540;
   background-color: #fff;
   border-radius: 5px;
   overflow: scroll;
@@ -368,7 +545,7 @@
 .create-staff form .form-field label input {
   height: 35px;
   width: 80%;
-  border: 1px solid #a5a5a5;
+  border: 1px solid #a5a5a540;
   border-radius: 3px;
   padding-left: 10px;
   outline: none;
@@ -378,7 +555,7 @@
 .update-staff form .form-field label input::placeholder,
 .create-staff form .form-field label input::placeholder {
   font-weight: bold;
-  color: #a5a5a5;
+  color: #7c7c7c;
 }
 .update-customer form .form-field label span,
 .create-customer form .form-field label span,
@@ -399,7 +576,7 @@
   border-radius: 3px;
   border: 1px solid #ffba2d;
   color: #fff;
-  box-shadow: 0 0 5px #a5a5a5;
+  box-shadow: 0 0 5px #d0d0d0;
 }
 
 .screen-groupon {
@@ -535,7 +712,7 @@
   border-radius: 3px;
   border: 1px solid #ffba2d;
   color: #fff;
-  box-shadow: 0 0 5px #a5a5a5;
+  box-shadow: 0 0 5px #d0d0d0;
 }
 @media (max-width: 450px) {
   .screen-groupon .sales-group .sale-group form button {
@@ -592,7 +769,7 @@
   margin: 0 15px;
   position: relative;
   padding: 10px;
-  box-shadow: 0 1px 3px #a5a5a5;
+  box-shadow: 0 1px 3px #d0d0d0;
   display: flex;
   justify-content: space-between;
   overflow: scroll;
@@ -740,7 +917,7 @@
   border-radius: 3px;
   border: 1px solid #ffba2d;
   color: #fff;
-  box-shadow: 0 0 5px #a5a5a5;
+  box-shadow: 0 0 5px #d0d0d0;
 }
 .screen-groupon .store .update-store .shop-form .open-dates__list,
 .screen-groupon .store .create-store .shop-form .open-dates__list {
@@ -1863,7 +2040,7 @@
   top: 10vh;
   left: 5vw;
   border-radius: 5px;
-  box-shadow: 0 0 6px #a5a5a5;
+  box-shadow: 0 0 6px #a5a5a540;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -2448,7 +2625,7 @@ body {
 }
 @media (max-width: 450px) {
   .product-card {
-    border: 1px solid #a5a5a5;
+    border: 1px solid #a5a5a540;
   }
 }
 
@@ -3197,7 +3374,7 @@ body {
   border-radius: 3px;
   border: 1px solid #ffba2d;
   color: #fff;
-  box-shadow: 0 0 5px #a5a5a5;
+  box-shadow: 0 0 5px #d0d0d0;
 }
 
 .component-product-order-card {
@@ -3294,18 +3471,39 @@ body {
   color: #ffba2d;
 }
 .main-window .component-productorders .section {
-  border-radius: 5px;
-  border: 1px solid #a5a5a5;
+  border-bottom: 1px solid #a5a5a540;
   margin-top: 20px;
+  padding: 0.5rem 1rem;
 }
 .main-window .component-productorders .section .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 100%;
+}
+.main-window .component-productorders .section .header p {
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+  color: #ffba2d;
 }
 .main-window .component-productorders .section .header h2 {
   color: #8c8c8c;
+}
+.main-window .component-productorders .section .header .control {
+  min-width: 10rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-window .component-productorders .section .header .control button {
+  border: 2px solid #ffba2d;
+  box-shadow: 0 0 3px #d0d0d0;
+  outline: none;
+  color: #ffba2d;
+  background: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.2rem;
 }
 .main-window .component-productorders .section .component-detail-view-table {
   height: auto;

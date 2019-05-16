@@ -2,7 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { fetchOrderProductsList } from "../../../actions";
-import TableView from "./TableView";
+// import TableView from "./TableView";
+import Section from "./Section";
 
 class Page extends React.Component {
   componentDidMount() {
@@ -15,14 +16,9 @@ class Page extends React.Component {
     }
     return (
       <div className="component-productorders">
-        {this.props.orderProductsList.map(orderProductArray => {
+        {this.props.orderProductsList.map((orderProductArray, index) => {
           return (
-            <div
-              className="section"
-              key={`orderProductsArray${orderProductArray[0].location_id}`}
-            >
-              <TableView productsList={orderProductArray} />
-            </div>
+            <Section orderProductArray={orderProductArray} index={index} />
           );
         })}
       </div>
