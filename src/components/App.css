@@ -376,7 +376,7 @@ table tbody tr.total td span {
 }
 table tbody tr td {
   padding: 0.8rem 0;
-  font-size: 1.1rem;
+  font-size: 1rem;
   border-bottom: 1px solid #a5a5a540;
 }
 table tbody tr td img {
@@ -410,6 +410,14 @@ table tbody tr td.text .placeholder {
   height: 0.8rem;
   width: 0.8rem;
   margin-right: 1rem;
+}
+table tbody tr td.long-text span {
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 12rem;
+  display: inline-block;
+  text-overflow: ellipsis;
+  font-size: 0.8rem;
 }
 
 .component-customer-manage {

@@ -68,7 +68,7 @@ table {
       }
       td {
         padding: 0.8rem 0;
-        font-size: 1.1rem;
+        font-size: 1rem;
         border-bottom: 1px solid color("borderTable");
         img {
           height: 4rem;
@@ -102,6 +102,16 @@ table {
             height: 0.8rem;
             width: 0.8rem;
             margin-right: 1rem;
+          }
+        }
+        &.long-text {
+          span {
+            overflow: hidden;
+            white-space: nowrap;
+            max-width: 12rem;
+            display: inline-block;
+            text-overflow: ellipsis;
+            font-size: 0.8rem;
           }
         }
       }
