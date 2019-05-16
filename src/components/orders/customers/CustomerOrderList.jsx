@@ -8,18 +8,17 @@ import {
   searchingOrders,
   advSearchingOrders,
   getShops,
-  fetchOrderBySingleStore
+  fetchOrderBySingleStore,
+  selectOrder
 } from "../../../actions";
-import CustomerOrderCard from "./CustomerOrderCard";
+// import CustomerOrderCard from "./CustomerOrderCard";
 import OrderDetail from "./OrderDetail";
 import StoreSelector from "./StoreSelector";
+import { Table } from "../../shared";
 
 class CustomerOrderList extends React.Component {
-  constructor(props) {
-    super(props);
+  state = { showDetails: false };
 
-    this.state = { showDetails: false };
-  }
   componentDidMount() {
     this.props.getOrders();
   }
@@ -40,6 +39,46 @@ class CustomerOrderList extends React.Component {
     return "component-customer-order-list__without-details";
   };
 
+  handleOnTrClick = ({ invoice_no }) => {
+    const order_id = this.props.orders.filter(
+      order => order.invoice_no === invoice_no
+    )[0].order_id;
+
+    this.props.selectOrder(order_id);
+  };
+  ths = [
+    { value: "订单号", type: "text" },
+    { value: "取货人", type: "text" },
+    { value: "取货时间", type: "text" },
+    { value: "产品明细", type: "text" },
+    { value: "订单状态", type: "text" },
+    { value: "订单总件数", type: "number" }
+  ];
+  dataFormat = [
+    { value: "invoice_no", type: "text" },
+    { value: "username", type: "text" },
+    { value: "fax", type: "text" },
+    { value: "item_details", type: "long-text" },
+    { value: "status_name", type: "text" },
+    { value: "total_quantity", type: "number" }
+  ];
+
+  makeTableData = list => {
+    return list.reduce((init, orderItem) => {
+      const { invoice_no, fax, status_name, user, order_items } = orderItem;
+      const { username } = user;
+      let total_quantity = 0;
+      let item_details = "";
+      order_items.forEach(element => {
+        total_quantity += element.quantity;
+        item_details += `${element.name} x ${element.quantity},`;
+      });
+      return [
+        ...init,
+        { invoice_no, username, fax, item_details, status_name, total_quantity }
+      ];
+    }, []);
+  };
   renderThead = () => {
     return (
       <thead>
@@ -114,7 +153,7 @@ class CustomerOrderList extends React.Component {
               activeLinkClass="link-item-active"
             />
           </div>
-          <div className="component-detail-view-table">
+          {/* <div className="component-detail-view-table">
             <table>
               {this.renderThead()}
               <tbody>
@@ -131,12 +170,18 @@ class CustomerOrderList extends React.Component {
                 })}
               </tbody>
             </table>
-          </div>
+          </div> */}
+          <Table
+            ths={this.ths}
+            dataFormat={this.dataFormat}
+            data={this.makeTableData(this.props.orders)}
+            sum={false}
+            striped={true}
+            onTrClick={this.handleOnTrClick}
+          />
         </div>
 
-        {this.state.showDetails ? (
-          <OrderDetail hiddenDetails={this.hiddenDetails} />
-        ) : null}
+        <OrderDetail hiddenDetails={this.hiddenDetails} />
       </React.Fragment>
     );
   }
@@ -154,6 +199,7 @@ export default connect(
     searchingOrders,
     advSearchingOrders,
     getShops,
-    fetchOrderBySingleStore
+    fetchOrderBySingleStore,
+    selectOrder
   }
 )(CustomerOrderList);

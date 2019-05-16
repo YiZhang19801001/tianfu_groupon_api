@@ -162,6 +162,10 @@ const fetchOrderProductsList = () => {
   };
 };
 
+const clearSelectOrder = () => {
+  return { type: types.selectOrder, payload: {} };
+};
+
 export default {
   index,
   show,
@@ -174,5 +178,6 @@ export default {
   onPageChange,
   fetchByStore,
   fetchBySingleStore,
-  fetchOrderProductsList
+  fetchOrderProductsList,
+  clearSelectOrder
 };
