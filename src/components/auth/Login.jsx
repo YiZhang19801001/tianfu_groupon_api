@@ -8,7 +8,7 @@ const Login = ({ userLogin }) => {
   };
   return (
     <div className="login-page">
-      <div className="header">果丽团购控制台</div>
+      <div className="header">最优选控制台</div>
       <div className="body">
         <LoginForm onSubmit={onSubmit} />
       </div>
