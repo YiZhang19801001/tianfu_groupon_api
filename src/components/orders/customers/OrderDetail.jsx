@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { makeDate } from "../../../helpers";
-import { updateOrderStatus } from "../../../actions";
+import { updateOrderStatus, clearSelectOrder } from "../../../actions";
 
 class OrderDetail extends React.Component {
   getTheadColor = () => {
@@ -68,11 +68,7 @@ class OrderDetail extends React.Component {
    */
   renderComponent = () => {
     if (!this.props.selectedOrder.store_name) {
-      return (
-        <div className="component-order-detail">
-          {"Select an order to see details"}
-        </div>
-      );
+      return null;
     }
     if (!this.props.selectedOrder.status) {
       return <div className="component-order-detail">{"loading..."}</div>;
@@ -80,7 +76,7 @@ class OrderDetail extends React.Component {
     return (
       <div className="component-order-detail">
         <div
-          onClick={this.props.hiddenDetails}
+          onClick={this.props.clearSelectOrder}
           className="component-order-detail__close-button"
         >
           <i className="material-icons">close</i>
@@ -91,7 +87,7 @@ class OrderDetail extends React.Component {
         </div>
         <div className="component-order-detail__header__field">
           <span>取货日期</span>
-          <span>{makeDate(this.props.selectedOrder.picked_date)}</span>
+          <span>{this.props.selectedOrder.picked_date}</span>
         </div>
         <div className="component-order-detail__header__field">
           <span>取货地点</span>
@@ -140,5 +136,5 @@ const mapStateToProps = ({ selectedOrder }) => {
 
 export default connect(
   mapStateToProps,
-  { updateOrderStatus }
+  { updateOrderStatus, clearSelectOrder }
 )(OrderDetail);

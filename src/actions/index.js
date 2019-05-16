@@ -68,6 +68,8 @@ export const advSearchingOrders = Order.advSearch;
 export const fetchProductOrderDetails = Order.fetchbyProducts;
 export const fetchOrderProductsList = Order.fetchOrderProductsList;
 
+export const clearSelectOrder = Order.clearSelectOrder;
+
 // shop actions
 export const fetchSingleShop = fetchShop;
 export const changeSelectedShop = Shop.patch;

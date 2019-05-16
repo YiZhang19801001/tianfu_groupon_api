@@ -5,7 +5,7 @@ import Loading from "./Loading";
 /**
  * main function component
  */
-export default ({ ths, data, dataFormat, sum, striped, id }) => {
+export default ({ ths, data, dataFormat, sum, striped, id, onTrClick }) => {
   if (!ths || !data || ths.length === 0) {
     return <Loading />;
   } else if (data.length === 0) {
@@ -33,7 +33,7 @@ export default ({ ths, data, dataFormat, sum, striped, id }) => {
   return (
     <table id={`${id ? id : ""}`}>
       {renderThead(ths, sort, dataFormat, sortOrders)}
-      {renderTbody(tableData, dataFormat, sum, striped)}
+      {renderTbody(tableData, dataFormat, sum, striped, onTrClick)}
     </table>
   );
 };
@@ -78,7 +78,7 @@ const renderThead = (ths, sort, dataFormat, sortOrders) => {
   );
 };
 
-const renderTbody = (data, dataFormat, sum, striped) => {
+const renderTbody = (data, dataFormat, sum, striped, onTrClick) => {
   let index = 0;
   return (
     <tbody>
@@ -91,6 +91,9 @@ const renderTbody = (data, dataFormat, sum, striped) => {
             className={`${index % 2 !== 0 ? "colored" : ""} ${
               striped ? "striped" : ""
             }`}
+            onClick={() => {
+              onTrClick(row);
+            }}
           >
             {renderTds(dataFormat, row)}
           </tr>

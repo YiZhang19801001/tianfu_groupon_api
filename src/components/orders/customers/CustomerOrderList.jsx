@@ -8,9 +8,10 @@ import {
   searchingOrders,
   advSearchingOrders,
   getShops,
-  fetchOrderBySingleStore
+  fetchOrderBySingleStore,
+  selectOrder
 } from "../../../actions";
-import CustomerOrderCard from "./CustomerOrderCard";
+// import CustomerOrderCard from "./CustomerOrderCard";
 import OrderDetail from "./OrderDetail";
 import StoreSelector from "./StoreSelector";
 import { Table } from "../../shared";
@@ -36,6 +37,14 @@ class CustomerOrderList extends React.Component {
       return "component-customer-order-list__with-details";
     }
     return "component-customer-order-list__without-details";
+  };
+
+  handleOnTrClick = ({ invoice_no }) => {
+    const order_id = this.props.orders.filter(
+      order => order.invoice_no === invoice_no
+    )[0].order_id;
+
+    this.props.selectOrder(order_id);
   };
   ths = [
     { value: "订单号", type: "text" },
@@ -168,12 +177,11 @@ class CustomerOrderList extends React.Component {
             data={this.makeTableData(this.props.orders)}
             sum={false}
             striped={true}
+            onTrClick={this.handleOnTrClick}
           />
         </div>
 
-        {this.state.showDetails ? (
-          <OrderDetail hiddenDetails={this.hiddenDetails} />
-        ) : null}
+        <OrderDetail hiddenDetails={this.hiddenDetails} />
       </React.Fragment>
     );
   }
@@ -191,6 +199,7 @@ export default connect(
     searchingOrders,
     advSearchingOrders,
     getShops,
-    fetchOrderBySingleStore
+    fetchOrderBySingleStore,
+    selectOrder
   }
 )(CustomerOrderList);

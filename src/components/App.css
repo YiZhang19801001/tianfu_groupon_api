@@ -2272,6 +2272,17 @@ table tbody tr td.long-text span {
   align-items: flex-start;
   width: 45vw;
   padding: 10px;
+  position: absolute;
+  right: 0;
+  top: 10vh;
+  background-color: #fff;
+  height: 80vh;
+  overflow: scroll;
+  box-shadow: -3px 3px 3px #d0d0d0;
+  border: 1px solid #a5a5a540;
+  border-right: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 @media (max-width: 450px) {
   .component-order-detail {

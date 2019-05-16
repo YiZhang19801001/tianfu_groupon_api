@@ -5,6 +5,17 @@
   align-items: flex-start;
   width: 45vw;
   padding: 10px;
+  position: absolute;
+  right: 0;
+  top: 10vh;
+  background-color: #fff;
+  height: 80vh;
+  overflow: scroll;
+  box-shadow: -3px 3px 3px color("boxShadow");
+  border: 1px solid color("border");
+  border-right: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   @include mobile {
     width: 100%;
   }
