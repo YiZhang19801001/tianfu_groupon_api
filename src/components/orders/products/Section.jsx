@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Table } from "../../shared";
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 export default ({ orderProductArray, index }) => {
   const [showTable, setShowTable] = useState(true);
@@ -17,11 +18,23 @@ export default ({ orderProductArray, index }) => {
           {orderProductArray[0].store_name}:{" "}
           {`共 ${getTotal(orderProductArray)} 个菜`}
         </p>
-        <div className={`control`}>
+        <div
+          className={`control`}
+          onClick={e => {
+            e.stopPropagation();
+          }}
+        >
           <button onClick={toggleTable}>
             {showTable ? "收起表格" : "展开表格"}
           </button>
-          <button>打印表格</button>
+          <ReactHTMLTableToExcel
+            id={`printExcelButton${index}`}
+            table={`productsOrderTable${index}`}
+            className="button"
+            filename="tablexls"
+            sheet="tablexls"
+            buttonText="Download as XLS"
+          />{" "}
         </div>
       </div>
       {showTable && (

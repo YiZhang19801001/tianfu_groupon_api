@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import { uniqueId } from "lodash";
 import { fetchOrderProductsList } from "../../../actions";
 // import TableView from "./TableView";
 import Section from "./Section";
@@ -18,7 +18,11 @@ class Page extends React.Component {
       <div className="component-productorders">
         {this.props.orderProductsList.map((orderProductArray, index) => {
           return (
-            <Section orderProductArray={orderProductArray} index={index} />
+            <Section
+              key={uniqueId("page-section")}
+              orderProductArray={orderProductArray}
+              index={index}
+            />
           );
         })}
       </div>
