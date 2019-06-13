@@ -1846,6 +1846,13 @@ table tbody tr td.long-text span {
   font-size: 1rem;
   padding: 0.2rem 0.5rem 0 0.5rem;
 }
+.edit-form .discounts-list .discount .discount-date-group {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  overflow: hidden;
+}
 
 .edit-form input[type=text] {
   margin-bottom: 2px;

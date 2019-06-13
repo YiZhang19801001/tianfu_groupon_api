@@ -5,7 +5,10 @@ import {
   getProduct,
   updateProduct,
   setProductImage,
-  getShops
+  getShops,
+  updateProductDiscount,
+  createProductDiscount,
+  fetchSalesGroups
 } from "../actions";
 import ProductForm from "./ProductForm";
 
@@ -15,6 +18,7 @@ class EditProduct extends React.Component {
       const id = parseInt(this.props.match.params.product_id);
       this.props.getProduct(id);
       this.props.getShops();
+      this.props.fetchSalesGroups();
     }
   }
 
@@ -38,22 +42,35 @@ class EditProduct extends React.Component {
             sort_order: this.props.product.product.sort_order,
             location_id: this.props.product.product.location
           }}
+          product_id={this.props.product.product.product_id}
           discounts={this.props.product.discounts}
           onSubmit={this.onSubmit}
           setSelectProductImage={this.props.setProductImage}
           image={this.props.product.product.image}
           shops={this.props.shops}
+          updateProductDiscount={this.props.updateProductDiscount}
+          createProductDiscount={this.props.createProductDiscount}
+          showDiscounts={true}
+          salesGroupList={this.props.salesGroupsList}
         />
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ product, shops }) => {
-  return { product, shops };
+const mapStateToProps = ({ product, shops, salesGroupsList }) => {
+  return { product, shops, salesGroupsList };
 };
 
 export default connect(
   mapStateToProps,
-  { getProduct, updateProduct, setProductImage, getShops }
+  {
+    getProduct,
+    updateProduct,
+    setProductImage,
+    getShops,
+    updateProductDiscount,
+    createProductDiscount,
+    fetchSalesGroups
+  }
 )(EditProduct);

@@ -5,7 +5,9 @@ import {
   getProduct,
   createNewProduct,
   setProductImage,
-  getShops
+  getShops,
+  createProductDiscount,
+  updateProductDiscount
 } from "../actions";
 import ProductForm from "./ProductForm";
 
@@ -34,6 +36,9 @@ class CreateProduct extends React.Component {
           setSelectProductImage={this.props.setProductImage}
           image={this.props.product.image}
           shops={this.props.shops}
+          createProductDiscount={this.props.createProductDiscount}
+          updateProductDiscount={this.props.updateProductDiscount}
+          showDiscounts={false}
         />
       </div>
     );
@@ -46,5 +51,12 @@ const mapStateToProps = ({ product, shops }) => {
 
 export default connect(
   mapStateToProps,
-  { getProduct, createNewProduct, setProductImage, getShops }
+  {
+    getProduct,
+    createNewProduct,
+    setProductImage,
+    getShops,
+    createProductDiscount,
+    updateProductDiscount
+  }
 )(CreateProduct);

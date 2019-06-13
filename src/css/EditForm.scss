@@ -55,6 +55,13 @@
         font-size: 1rem;
         padding: 0.2rem 0.5rem 0 0.5rem;
       }
+      .discount-date-group {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 2rem;
+        overflow: hidden;
+      }
     }
   }
 }
