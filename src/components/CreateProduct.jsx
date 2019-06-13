@@ -14,6 +14,12 @@ class CreateProduct extends React.Component {
         <div className="component-create-product__title">添加新产品</div>
         <ProductForm
           onSubmit={this.onSubmit}
+          initFormValues={{
+            english_name: "",
+            chinese_name: "",
+            price: 0,
+            sort_order: 1
+          }}
           setSelectProductImage={this.props.setProductImage}
           image={this.props.product.image}
         />
