@@ -19,6 +19,7 @@ class ProductManageMainWindow extends React.Component {
   }
   componentDidMount() {
     this.props.getProducts(this.state.product_status);
+    console.log("props of ProductManageMainWindow", this.props);
   }
   changeProductStatus = e => {
     const content = e.target.innerText;

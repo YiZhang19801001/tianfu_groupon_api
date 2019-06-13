@@ -5,8 +5,6 @@ const selectedShopReducer = (
   selectedShop = { open: [{ open_date: "", open_time: "", close_time: "" }] },
   action
 ) => {
-  console.log({ action });
-
   const checkOpenDates = newDate => {
     let flag = false;
     if (!selectedShop || !selectedShop.open) {
