@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect } from "react";
 import { uniqueId } from "lodash";
+import moment from "moment";
 
 import ProductFormCategorySelector from "./ProductFormCategorySelector";
 import StoreSelector from "./StoreSelector";
@@ -42,7 +43,8 @@ const ProductForm = ({
   image,
   setSelectProductImage,
   onSubmit,
-  shops
+  shops,
+  discounts
 }) => {
   const [state, dispatch] = useReducer(productFormReducer, initValues);
 
@@ -98,7 +100,7 @@ const ProductForm = ({
    * @param {Object} {input,placeholder,meta}
    * @returns {JSX}
    */
-  const renderInput = ({ name, placeholder, className, meta }) => {
+  const renderInput = ({ name, placeholder, className }) => {
     return (
       <div className="form-field">
         <input
@@ -203,7 +205,9 @@ const ProductForm = ({
             </div>
           </div>
         </div>
-        <div className="component-edit-form__subtitle">联接产品到店铺</div>
+        <div className="component-edit-form__subtitle">
+          联接产品到可以生产的店铺
+        </div>
 
         <select
           className={`select-inputs`}
@@ -229,12 +233,79 @@ const ProductForm = ({
           })}
         </select>
 
+        <DiscountsList discounts={discounts} />
+
         <div className="component-edit-form__button-wrapper">
           <button className="component-edit-form__submit-button">
             确认保存
           </button>
         </div>
       </form>
+    </div>
+  );
+};
+
+const discountsReducer = (state, action) => {
+  switch (action.type) {
+    case "update":
+      return state.map(x => {
+        if (x.product_discount_id === action.product_discount_id) {
+          return { ...x, ...action.payload };
+        } else {
+          return x;
+        }
+      });
+    default:
+      return state;
+  }
+};
+
+const DiscountsList = ({ discounts }) => {
+  const [state, dispatch] = useReducer(discountsReducer, discounts);
+
+  return (
+    <div className={`discounts-list`}>
+      {discounts.map((discount, i) => {
+        const {
+          date_end,
+          date_start,
+          max_quantity,
+          quantity,
+          product_discount_id
+        } = discount;
+        return (
+          <div
+            className={`discount ${
+              !moment().isBefore(date_end) ? "disable" : ""
+            }`}
+            key={uniqueId("discount-item")}
+          >
+            <input
+              type="text"
+              value={state[i] ? state[i].price : 0}
+              onChange={e => {
+                dispatch({
+                  type: "update",
+                  product_discount_id,
+                  payload: { price: e.target.value }
+                });
+              }}
+              disabled={!moment().isBefore(date_end)}
+              className={`discount-price`}
+            />
+            <div className={`discount-date-group`}>
+              <span className={`discount-date-end`}>{date_end}</span>{" "}
+              <span className={`discount-date-start`}>{date_start}</span>
+            </div>
+            <div className={`discount-quantity-group`}>
+              <span className={`quantity-remain`}>
+                {max_quantity - quantity}
+              </span>
+              /<span className={`quantity-max`}>{max_quantity}</span>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };

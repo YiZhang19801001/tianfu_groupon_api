@@ -38,6 +38,7 @@ class EditProduct extends React.Component {
             sort_order: this.props.product.product.sort_order,
             location_id: this.props.product.product.location
           }}
+          discounts={this.props.product.discounts}
           onSubmit={this.onSubmit}
           setSelectProductImage={this.props.setProductImage}
           image={this.props.product.product.image}

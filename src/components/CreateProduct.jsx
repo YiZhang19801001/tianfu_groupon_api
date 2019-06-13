@@ -30,6 +30,7 @@ class CreateProduct extends React.Component {
             sort_order: 1,
             location_id: "text_label"
           }}
+          discounts={[]}
           setSelectProductImage={this.props.setProductImage}
           image={this.props.product.image}
           shops={this.props.shops}
