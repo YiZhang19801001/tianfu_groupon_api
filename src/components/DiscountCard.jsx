@@ -1,44 +1,60 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import moment from "moment";
 
-const discountReducer = (editable, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
     case "toggle":
-      return !editable;
-
+      return { ...state, editable: !state.editable };
+    case "inputChange":
+      return {
+        ...state,
+        formValues: { ...state.formValues, ...action.payload }
+      };
     default:
-      return editable;
+      return state;
   }
 };
 
-const initDiscount = {
-  max_quantity: 0,
-  sales_group_id: 1,
-  quantity: 0,
-  product_discount_id: 1
+const initState = {
+  editable: false,
+  formValues: {
+    max_quantity: 0,
+    sales_group_id: 1,
+    quantity: 0,
+    product_discount_id: 1,
+    price: 0,
+    date_end: "",
+    date_start: ""
+  }
 };
 
-export default ({ discount, state, i, dispatch, updateProductDiscount }) => {
-  const {
-    date_end,
-    date_start,
-    max_quantity,
-    quantity,
-    product_discount_id
-  } = discount;
+export default ({ discount, updateProductDiscount }) => {
+  const [state, dispatch] = useReducer(reducer, initState);
 
-  const [editable, editableDispatch] = useReducer(discountReducer, discount);
+  useEffect(() => {
+    dispatch({ type: "inputChange", payload: discount });
+  }, [discount]);
+
+  const {
+    max_quantity,
+    sales_group_id,
+    quantity,
+    product_discount_id,
+    price,
+    date_end,
+    date_start
+  } = state.formValues;
+
   return (
     <div
       className={`discount ${!moment().isBefore(date_end) ? "disable" : ""}`}
     >
       <input
         type="text"
-        value={state[i] ? state[i].price : 0}
+        value={price}
         onChange={e => {
           dispatch({
-            type: "update",
-            product_discount_id,
+            type: "inputChange",
             payload: { price: e.target.value }
           });
         }}
@@ -59,12 +75,12 @@ export default ({ discount, state, i, dispatch, updateProductDiscount }) => {
         <span className={`quantity-max`}>{max_quantity}</span>
       </div>
       <div className={`button-group`}>
-        {!editable ? (
+        {!state.editable ? (
           <button
             className={`edit`}
             onClick={e => {
               e.preventDefault();
-              editableDispatch({ type: "toggle" });
+              dispatch({ type: "toggle" });
             }}
           >
             edit
@@ -74,8 +90,8 @@ export default ({ discount, state, i, dispatch, updateProductDiscount }) => {
             className={`save`}
             onClick={e => {
               e.preventDefault();
-              updateProductDiscount(discount);
-              editableDispatch({ type: "toggle" });
+              updateProductDiscount(state.formValues);
+              dispatch({ type: "toggle" });
             }}
           >
             save
