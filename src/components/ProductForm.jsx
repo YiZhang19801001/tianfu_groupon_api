@@ -1,4 +1,5 @@
 import React, { useReducer, useEffect } from "react";
+import { uniqueId } from "lodash";
 
 import ProductFormCategorySelector from "./ProductFormCategorySelector";
 import StoreSelector from "./StoreSelector";
@@ -12,7 +13,8 @@ const initValues = {
     english_name: "",
     chinese_name: "",
     sort_order: 1,
-    price: 0
+    price: 0,
+    location_id: "text_label"
   }
 };
 
@@ -30,11 +32,17 @@ const productFormReducer = (state, action) => {
   }
 };
 
+/**
+ * funtion - main function for exporting
+ * @param {object} props
+ */
+
 const ProductForm = ({
   initFormValues,
   image,
   setSelectProductImage,
-  onSubmit
+  onSubmit,
+  shops
 }) => {
   const [state, dispatch] = useReducer(productFormReducer, initValues);
 
@@ -197,9 +205,29 @@ const ProductForm = ({
         </div>
         <div className="component-edit-form__subtitle">联接产品到店铺</div>
 
-        <StoreSelector />
-        {/* {renderGrouponSwitch()}
-        {renderGrouponControl()} */}
+        <select
+          className={`select-inputs`}
+          name={`location_id`}
+          value={state.formValues.location_id}
+          onChange={e => {
+            dispatch({
+              type: "inputChange",
+              payload: { location_id: e.target.value }
+            });
+          }}
+        >
+          <option value="text_label" disabled={true}>
+            请选择可以生产该产品的店铺
+          </option>
+          {shops.map(shop => {
+            const { name, location_id } = shop;
+            return (
+              <option key={uniqueId("option")} value={location_id}>
+                {name}
+              </option>
+            );
+          })}
+        </select>
 
         <div className="component-edit-form__button-wrapper">
           <button className="component-edit-form__submit-button">

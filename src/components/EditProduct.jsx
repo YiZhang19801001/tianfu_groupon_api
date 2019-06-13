@@ -1,7 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { getProduct, updateProduct, setProductImage } from "../actions";
+import {
+  getProduct,
+  updateProduct,
+  setProductImage,
+  getShops
+} from "../actions";
 import ProductForm from "./ProductForm";
 
 class EditProduct extends React.Component {
@@ -9,12 +14,13 @@ class EditProduct extends React.Component {
     if (!this.props.product.product_id) {
       const id = parseInt(this.props.match.params.product_id);
       this.props.getProduct(id);
+      this.props.getShops();
     }
   }
 
-  onSubmit = (file, isGroupon) => {
+  onSubmit = file => {
     const id = parseInt(this.props.match.params.product_id);
-    this.props.updateProduct(id, file, isGroupon);
+    this.props.updateProduct(id, file, true);
   };
 
   render() {
@@ -29,22 +35,24 @@ class EditProduct extends React.Component {
             english_name: this.props.product.descriptions[0].name,
             chinese_name: this.props.product.descriptions[1].name,
             price: this.props.product.product.price,
-            sort_order: this.props.product.product.sort_order
+            sort_order: this.props.product.product.sort_order,
+            location_id: this.props.product.product.location
           }}
           onSubmit={this.onSubmit}
           setSelectProductImage={this.props.setProductImage}
           image={this.props.product.product.image}
+          shops={this.props.shops}
         />
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ product }) => {
-  return { product };
+const mapStateToProps = ({ product, shops }) => {
+  return { product, shops };
 };
 
 export default connect(
   mapStateToProps,
-  { getProduct, updateProduct, setProductImage }
+  { getProduct, updateProduct, setProductImage, getShops }
 )(EditProduct);
