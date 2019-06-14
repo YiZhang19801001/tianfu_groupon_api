@@ -260,29 +260,11 @@ const ProductForm = ({
   );
 };
 
-const discountsReducer = (state, action) => {
-  switch (action.type) {
-    case "update":
-      return state.map(x => {
-        if (x.product_discount_id === action.product_discount_id) {
-          return { ...x, ...action.payload };
-        } else {
-          return x;
-        }
-      });
-    default:
-      return state;
-  }
-};
-
 const DiscountsList = ({
   discounts,
-  createProductDiscount,
   updateProductDiscount,
   removeProductDiscount
 }) => {
-  const [state, dispatch] = useReducer(discountsReducer, discounts);
-
   return (
     <div className={`discounts-list`}>
       {discounts.map((discount, i) => {
