@@ -28,7 +28,7 @@ const initState = {
   }
 };
 
-export default ({ discount, updateProductDiscount }) => {
+export default ({ discount, updateProductDiscount, removeProductDiscount }) => {
   const [state, dispatch] = useReducer(reducer, initState);
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export default ({ discount, updateProductDiscount }) => {
             payload: { price: e.target.value }
           });
         }}
-        disabled={!moment().isBefore(date_end)}
+        disabled={!moment().isBefore(date_end) || !state.editable}
         className={`discount-price`}
       />
       <div className={`discount-date-group`}>
@@ -71,8 +71,29 @@ export default ({ discount, updateProductDiscount }) => {
         </span>
       </div>
       <div className={`discount-quantity-group`}>
-        <span className={`quantity-remain`}>{max_quantity - quantity}</span>/
-        <span className={`quantity-max`}>{max_quantity}</span>
+        <input
+          className={`quantity-remain`}
+          disabled={!state.editable}
+          value={quantity}
+          onChange={e => {
+            dispatch({
+              type: "inputChange",
+              payload: { quantity: e.target.value }
+            });
+          }}
+        />
+        /
+        <input
+          className={`quantity-max`}
+          disabled={!state.editable}
+          value={max_quantity}
+          onChange={e => {
+            dispatch({
+              type: "inputChange",
+              payload: { max_quantity: e.target.value }
+            });
+          }}
+        />
       </div>
       <div className={`button-group`}>
         {!state.editable ? (
@@ -97,6 +118,16 @@ export default ({ discount, updateProductDiscount }) => {
             save
           </button>
         )}
+
+        <button
+          className={`remove`}
+          onClick={e => {
+            e.preventDefault();
+            removeProductDiscount(product_discount_id);
+          }}
+        >
+          delete
+        </button>
       </div>
     </div>
   );

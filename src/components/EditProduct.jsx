@@ -8,6 +8,7 @@ import {
   getShops,
   updateProductDiscount,
   createProductDiscount,
+  removeProductDiscount,
   fetchSalesGroups
 } from "../actions";
 import ProductForm from "./ProductForm";
@@ -16,6 +17,7 @@ class EditProduct extends React.Component {
   componentDidMount() {
     if (!this.props.product.product_id) {
       const id = parseInt(this.props.match.params.product_id);
+      // todo: change getSingeProduct api return object to avoid multiple api calls in same time
       this.props.getProduct(id);
       this.props.getShops();
       this.props.fetchSalesGroups();
@@ -50,6 +52,7 @@ class EditProduct extends React.Component {
           shops={this.props.shops}
           updateProductDiscount={this.props.updateProductDiscount}
           createProductDiscount={this.props.createProductDiscount}
+          removeProductDiscount={this.props.removeProductDiscount}
           showDiscounts={true}
           salesGroupList={this.props.salesGroupsList}
         />
@@ -71,6 +74,7 @@ export default connect(
     getShops,
     updateProductDiscount,
     createProductDiscount,
+    removeProductDiscount,
     fetchSalesGroups
   }
 )(EditProduct);

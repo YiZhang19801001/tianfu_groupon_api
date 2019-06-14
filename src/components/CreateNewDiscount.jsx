@@ -7,7 +7,16 @@ const reducer = (state, action) => {
         ...state,
         formValues: { ...state.formValues, ...action.payload }
       };
-
+    case "close":
+      return {
+        ...state,
+        showForm: false
+      };
+    case "open":
+      return {
+        ...state,
+        showForm: true
+      };
     default:
       return state;
   }
@@ -57,6 +66,22 @@ export default ({ createProductDiscount, product_id, salesGroupList }) => {
     }
   ];
 
+  if (!state.showForm) {
+    return (
+      <div className={`button-container`}>
+        <button
+          className={`button-add`}
+          onClick={e => {
+            e.preventDefault();
+            dispatch({ type: "open" });
+          }}
+        >
+          add new
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className={`add-product-discount`}>
       {formFields.map(field => {
@@ -100,17 +125,29 @@ export default ({ createProductDiscount, product_id, salesGroupList }) => {
           );
         })}
       </select>
-      <button
-        onClick={e => {
-          e.preventDefault();
-          createProductDiscount({
-            ...state.formValues,
-            product_id: product_id
-          });
-        }}
-      >
-        ADD NEW
-      </button>
+      <div className={`button-group`}>
+        <button
+          onClick={e => {
+            e.preventDefault();
+            createProductDiscount({
+              ...state.formValues,
+              product_id: product_id
+            });
+          }}
+          className={`button-add`}
+        >
+          save
+        </button>
+        <button
+          onClick={e => {
+            e.preventDefault();
+            dispatch({ type: "close" });
+          }}
+          className={`button-cancel`}
+        >
+          Cancel
+        </button>
+      </div>
     </div>
   );
 };

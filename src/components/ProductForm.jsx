@@ -50,7 +50,8 @@ const ProductForm = ({
   updateProductDiscount,
   showDiscounts,
   salesGroupList = [],
-  product_id
+  product_id,
+  removeProductDiscount
 }) => {
   const [state, dispatch] = useReducer(productFormReducer, initValues);
 
@@ -245,6 +246,7 @@ const ProductForm = ({
               discounts={discounts}
               createProductDiscount={createProductDiscount}
               updateProductDiscount={updateProductDiscount}
+              removeProductDiscount={removeProductDiscount}
             />
             <CreateNewDiscount
               createProductDiscount={createProductDiscount}
@@ -276,7 +278,8 @@ const discountsReducer = (state, action) => {
 const DiscountsList = ({
   discounts,
   createProductDiscount,
-  updateProductDiscount
+  updateProductDiscount,
+  removeProductDiscount
 }) => {
   const [state, dispatch] = useReducer(discountsReducer, discounts);
 
@@ -287,11 +290,8 @@ const DiscountsList = ({
           <DiscountCard
             key={`discount-card ${i}`}
             discount={discount}
-            i={i}
-            dispatch={dispatch}
-            state={state}
-            createProductDiscount={createProductDiscount}
             updateProductDiscount={updateProductDiscount}
+            removeProductDiscount={removeProductDiscount}
           />
         );
       })}

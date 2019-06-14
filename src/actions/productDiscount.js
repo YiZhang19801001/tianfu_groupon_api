@@ -1,6 +1,5 @@
 import types from "./actionTypes";
 import kidsnParty from "../apis/kidsnParty";
-import { history } from "../history";
 
 const update = values => {
   return async function(dispatch) {
@@ -22,7 +21,19 @@ const create = values => {
   };
 };
 
+const remove = product_discount_id => {
+  return async function(dispatch) {
+    const response = await kidsnParty.delete(
+      `/discounts/${product_discount_id}`,
+      { params: { product_discount_id } }
+    );
+
+    dispatch({ type: types.getProduct, payload: response.data });
+  };
+};
+
 export default {
   create,
-  update
+  update,
+  remove
 };

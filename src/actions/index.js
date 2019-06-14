@@ -127,3 +127,4 @@ export const actionTypes = types;
 // export productDiscount actions
 export const createProductDiscount = productDiscount.create;
 export const updateProductDiscount = productDiscount.update;
+export const removeProductDiscount = productDiscount.remove;
