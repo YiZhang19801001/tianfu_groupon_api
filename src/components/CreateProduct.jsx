@@ -1,13 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { getProduct, createNewProduct, setProductImage } from "../actions";
+import {
+  getProduct,
+  createNewProduct,
+  setProductImage,
+  getShops,
+  createProductDiscount,
+  updateProductDiscount
+} from "../actions";
 import ProductForm from "./ProductForm";
 
 class CreateProduct extends React.Component {
-  onSubmit = (file, isGroupon) => {
-    this.props.createNewProduct(file, isGroupon);
+  onSubmit = file => {
+    this.props.createNewProduct(file, true);
   };
+
+  componentDidMount() {
+    this.props.getShops();
+  }
   render() {
     return (
       <div className="component-create-product">
@@ -18,21 +29,34 @@ class CreateProduct extends React.Component {
             english_name: "",
             chinese_name: "",
             price: 0,
-            sort_order: 1
+            sort_order: 1,
+            location_id: "text_label"
           }}
+          discounts={[]}
           setSelectProductImage={this.props.setProductImage}
           image={this.props.product.image}
+          shops={this.props.shops}
+          createProductDiscount={this.props.createProductDiscount}
+          updateProductDiscount={this.props.updateProductDiscount}
+          showDiscounts={false}
         />
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ product }) => {
-  return { product };
+const mapStateToProps = ({ product, shops }) => {
+  return { product, shops };
 };
 
 export default connect(
   mapStateToProps,
-  { getProduct, createNewProduct, setProductImage }
+  {
+    getProduct,
+    createNewProduct,
+    setProductImage,
+    getShops,
+    createProductDiscount,
+    updateProductDiscount
+  }
 )(CreateProduct);

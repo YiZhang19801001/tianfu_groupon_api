@@ -37,6 +37,172 @@
     margin-bottom: 1rem;
     outline: none;
   }
+  .discounts-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    .discount {
+      width: 100%;
+      height: max-content;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem;
+      .discount-price {
+        width: 5rem;
+        font-size: 1rem;
+        padding: 0.2rem 0.5rem 0 0.5rem;
+        border-radius: 2px;
+      }
+      .discount-date-group {
+        flex: 2;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 2rem;
+        overflow: hidden;
+        .discount-date-start,
+        .discount-date-end {
+          font-size: 0.5rem;
+        }
+      }
+      .discount-quantity-group {
+        width: 5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: 0.5rem;
+        .quantity-remain {
+          width: 1.5rem;
+          border: none;
+          text-align: right;
+        }
+        .quantity-max {
+          width: 1.5rem;
+          border: none;
+          text-align: right;
+        }
+      }
+      .button-group {
+        flex: 1;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+        button {
+          width: 45%;
+          height: 1rem;
+          font-size: 0.5rem;
+          padding: 0;
+          overflow: hidden;
+          border: none;
+          outline: none;
+          border-radius: 2px;
+          color: #fff;
+          box-shadow: 0 0 10px #3c3c3c2a;
+          text-transform: capitalize;
+          &.save {
+            background-color: color("main");
+          }
+          &.remove {
+            background-color: color("myRed");
+          }
+          &.edit {
+            background-color: color("myBlue");
+          }
+        }
+      }
+    }
+  }
+  .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    .button-add {
+      margin-top: 0.5rem;
+      outline: none;
+      border: none;
+      padding: 0.5rem 1rem;
+      box-shadow: 0 0 10px color("boxShadow");
+      text-transform: uppercase;
+      color: #fff;
+      background-color: color("main");
+      border-radius: 4px;
+      font-size: 0.7rem;
+      margin-right: 0.5rem;
+    }
+  }
+  .add-product-discount {
+    width: 100%;
+    margin-top: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 10px color("boxShadow");
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .field {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      align-items: center;
+      margin-bottom: 0.5rem;
+      .label {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        .name {
+          font-size: 0.7rem;
+          color: color("textPrimary");
+          flex: 1;
+        }
+        .input {
+          flex: 3;
+          outline: none;
+          border: none;
+          padding: 0 0.5rem;
+          font-size: 1rem;
+        }
+      }
+    }
+    .select {
+      width: 80%;
+      margin: auto;
+      font-size: 1rem;
+      color: color("textPrimary");
+    }
+    .button-group {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      .button-add {
+        margin-top: 0.5rem;
+        outline: none;
+        border: none;
+        padding: 0.5rem 1rem;
+        box-shadow: 0 0 10px color("boxShadow");
+        text-transform: uppercase;
+        color: #fff;
+        background-color: color("main");
+        border-radius: 4px;
+        font-size: 0.7rem;
+        margin-right: 0.5rem;
+      }
+      .button-cancel {
+        margin-top: 0.5rem;
+        outline: none;
+        border: none;
+        padding: 0.5rem 1rem;
+        box-shadow: 0 0 10px color("boxShadow");
+        text-transform: uppercase;
+        color: #fff;
+        background-color: color("myRed");
+        border-radius: 4px;
+        font-size: 0.7rem;
+      }
+    }
+  }
 }
 .edit-form input[type="text"] {
   margin-bottom: 2px;

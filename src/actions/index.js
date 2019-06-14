@@ -14,6 +14,7 @@ import Staff from "./Staff";
 import SalesGroup from "./SalesGroup";
 import App from "./App.js";
 import Auth from "./Auth.js";
+import productDiscount from "./productDiscount";
 
 // produt actions
 export const getProducts = Product.index;
@@ -122,3 +123,8 @@ export const checkLogin = Auth.check;
 
 // export action types
 export const actionTypes = types;
+
+// export productDiscount actions
+export const createProductDiscount = productDiscount.create;
+export const updateProductDiscount = productDiscount.update;
+export const removeProductDiscount = productDiscount.remove;

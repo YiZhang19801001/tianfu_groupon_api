@@ -1,7 +1,10 @@
 import React, { useReducer, useEffect } from "react";
+import { uniqueId } from "lodash";
+import moment from "moment";
+import CreateNewDiscount from "./CreateNewDiscount";
 
 import ProductFormCategorySelector from "./ProductFormCategorySelector";
-import StoreSelector from "./StoreSelector";
+import DiscountCard from "./DiscountCard";
 
 const initValues = {
   isShowAddCategoryForm: false,
@@ -12,7 +15,8 @@ const initValues = {
     english_name: "",
     chinese_name: "",
     sort_order: 1,
-    price: 0
+    price: 0,
+    location_id: "text_label"
   }
 };
 
@@ -30,11 +34,24 @@ const productFormReducer = (state, action) => {
   }
 };
 
+/**
+ * funtion - main function for exporting
+ * @param {object} props
+ */
+
 const ProductForm = ({
   initFormValues,
   image,
   setSelectProductImage,
-  onSubmit
+  onSubmit,
+  shops,
+  discounts,
+  createProductDiscount,
+  updateProductDiscount,
+  showDiscounts,
+  salesGroupList = [],
+  product_id,
+  removeProductDiscount
 }) => {
   const [state, dispatch] = useReducer(productFormReducer, initValues);
 
@@ -90,7 +107,7 @@ const ProductForm = ({
    * @param {Object} {input,placeholder,meta}
    * @returns {JSX}
    */
-  const renderInput = ({ name, placeholder, className, meta }) => {
+  const renderInput = ({ name, placeholder, className }) => {
     return (
       <div className="form-field">
         <input
@@ -195,18 +212,89 @@ const ProductForm = ({
             </div>
           </div>
         </div>
-        <div className="component-edit-form__subtitle">联接产品到店铺</div>
-
-        <StoreSelector />
-        {/* {renderGrouponSwitch()}
-        {renderGrouponControl()} */}
-
-        <div className="component-edit-form__button-wrapper">
-          <button className="component-edit-form__submit-button">
-            确认保存
-          </button>
+        <div className="component-edit-form__subtitle">
+          联接产品到可以生产的店铺
         </div>
+
+        <select
+          className={`select-inputs`}
+          name={`location_id`}
+          value={state.formValues.location_id}
+          onChange={e => {
+            dispatch({
+              type: "inputChange",
+              payload: { location_id: e.target.value }
+            });
+          }}
+        >
+          <option value="text_label" disabled={true}>
+            请选择可以生产该产品的店铺
+          </option>
+          {shops.map(shop => {
+            const { name, location_id } = shop;
+            return (
+              <option key={uniqueId("option")} value={location_id}>
+                {name}
+              </option>
+            );
+          })}
+        </select>
+
+        {showDiscounts && (
+          <>
+            <DiscountsList
+              discounts={discounts}
+              createProductDiscount={createProductDiscount}
+              updateProductDiscount={updateProductDiscount}
+              removeProductDiscount={removeProductDiscount}
+            />
+            <CreateNewDiscount
+              createProductDiscount={createProductDiscount}
+              salesGroupList={salesGroupList}
+              product_id={product_id}
+            />
+          </>
+        )}
       </form>
+    </div>
+  );
+};
+
+const discountsReducer = (state, action) => {
+  switch (action.type) {
+    case "update":
+      return state.map(x => {
+        if (x.product_discount_id === action.product_discount_id) {
+          return { ...x, ...action.payload };
+        } else {
+          return x;
+        }
+      });
+    default:
+      return state;
+  }
+};
+
+const DiscountsList = ({
+  discounts,
+  createProductDiscount,
+  updateProductDiscount,
+  removeProductDiscount
+}) => {
+  const [state, dispatch] = useReducer(discountsReducer, discounts);
+
+  return (
+    <div className={`discounts-list`}>
+      {discounts.map((discount, i) => {
+        return (
+          <DiscountCard
+            key={`discount-card ${i}`}
+            discount={discount}
+            updateProductDiscount={updateProductDiscount}
+            removeProductDiscount={removeProductDiscount}
+          />
+        );
+      })}
     </div>
   );
 };

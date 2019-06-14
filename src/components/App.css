@@ -1826,6 +1826,171 @@ table tbody tr td.long-text span {
   margin-bottom: 1rem;
   outline: none;
 }
+.edit-form .discounts-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+.edit-form .discounts-list .discount {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+.edit-form .discounts-list .discount .discount-price {
+  width: 5rem;
+  font-size: 1rem;
+  padding: 0.2rem 0.5rem 0 0.5rem;
+  border-radius: 2px;
+}
+.edit-form .discounts-list .discount .discount-date-group {
+  flex: 2;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  overflow: hidden;
+}
+.edit-form .discounts-list .discount .discount-date-group .discount-date-start,
+.edit-form .discounts-list .discount .discount-date-group .discount-date-end {
+  font-size: 0.5rem;
+}
+.edit-form .discounts-list .discount .discount-quantity-group {
+  width: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 0.5rem;
+}
+.edit-form .discounts-list .discount .discount-quantity-group .quantity-remain {
+  width: 1.5rem;
+  border: none;
+  text-align: right;
+}
+.edit-form .discounts-list .discount .discount-quantity-group .quantity-max {
+  width: 1.5rem;
+  border: none;
+  text-align: right;
+}
+.edit-form .discounts-list .discount .button-group {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+.edit-form .discounts-list .discount .button-group button {
+  width: 45%;
+  height: 1rem;
+  font-size: 0.5rem;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  color: #fff;
+  box-shadow: 0 0 10px #3c3c3c2a;
+  text-transform: capitalize;
+}
+.edit-form .discounts-list .discount .button-group button.save {
+  background-color: #ffba2d;
+}
+.edit-form .discounts-list .discount .button-group button.remove {
+  background-color: #f55747;
+}
+.edit-form .discounts-list .discount .button-group button.edit {
+  background-color: #4c4cfa;
+}
+.edit-form .button-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.edit-form .button-container .button-add {
+  margin-top: 0.5rem;
+  outline: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 0 10px #d0d0d0;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #ffba2d;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  margin-right: 0.5rem;
+}
+.edit-form .add-product-discount {
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #d0d0d0;
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.edit-form .add-product-discount .field {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.edit-form .add-product-discount .field .label {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.edit-form .add-product-discount .field .label .name {
+  font-size: 0.7rem;
+  color: #8c8c8c;
+  flex: 1;
+}
+.edit-form .add-product-discount .field .label .input {
+  flex: 3;
+  outline: none;
+  border: none;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+}
+.edit-form .add-product-discount .select {
+  width: 80%;
+  margin: auto;
+  font-size: 1rem;
+  color: #8c8c8c;
+}
+.edit-form .add-product-discount .button-group {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.edit-form .add-product-discount .button-group .button-add {
+  margin-top: 0.5rem;
+  outline: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 0 10px #d0d0d0;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #ffba2d;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  margin-right: 0.5rem;
+}
+.edit-form .add-product-discount .button-group .button-cancel {
+  margin-top: 0.5rem;
+  outline: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 0 10px #d0d0d0;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #f55747;
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
 
 .edit-form input[type=text] {
   margin-bottom: 2px;
