@@ -71,12 +71,13 @@ export default ({ createProductDiscount, product_id, salesGroupList }) => {
       <div className={`button-container`}>
         <button
           className={`button-add`}
+          style={{ backgroundColor: "#4c4cfa" }}
           onClick={e => {
             e.preventDefault();
             dispatch({ type: "open" });
           }}
         >
-          add new
+          关联新的团
         </button>
       </div>
     );

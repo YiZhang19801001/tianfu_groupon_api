@@ -255,6 +255,15 @@ const ProductForm = ({
             />
           </>
         )}
+
+        <div className={`button-container`}>
+          <button
+            className={`button-add`}
+            style={{ backgroundColor: "#FFBA2D" }}
+          >
+            确认保存
+          </button>
+        </div>
       </form>
     </div>
   );
