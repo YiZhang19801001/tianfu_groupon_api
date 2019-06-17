@@ -174,10 +174,16 @@ const userListReducer = (userList = [], action) => {
   return userList;
 };
 const salesGroupReducer = (salesGroup = {}, action) => {
-  if (action.type === actionTypes.fetchSalesGroup) {
-    return action.payload;
+  switch (action.type) {
+    case actionTypes.fetchSalesGroup:
+      return action.payload;
+    case actionTypes.SET_SALES_GROUP:
+      return action.payload;
+    case actionTypes.fetchSalesGroups:
+      return action.salesGroup;
+    default:
+      return salesGroup;
   }
-  return salesGroup;
 };
 const salesGroupsListReducer = (salesGroupsList = [], action) => {
   if (action.type === actionTypes.fetchSalesGroups) {
@@ -222,6 +228,16 @@ const locationIdReducer = (locationId = "", action) => {
       return locationId;
   }
 };
+const salesGroupIdReducer = (sales_group_id = 3, action) => {
+  switch (action.type) {
+    case actionTypes.SET_SALES_GROUP_ID:
+      return action.payload;
+    case actionTypes.fetchSalesGroups:
+      return action.salesGroupId;
+    default:
+      return sales_group_id;
+  }
+};
 export default combineReducers({
   locationId: locationIdReducer, //*use for filter customer orders list
   orderProductsList: orderProductsListReducer,
@@ -251,5 +267,6 @@ export default combineReducers({
   modalStatus: toggleModalReducer,
   salesGroupsList: salesGroupsListReducer,
   salesGroup: salesGroupReducer,
-  loginUser: loginUserReducer
+  loginUser: loginUserReducer,
+  sales_group_id: salesGroupIdReducer
 });

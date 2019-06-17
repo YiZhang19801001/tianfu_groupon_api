@@ -5,7 +5,9 @@ const index = () => {
     const response = await kidsnparty.get("/salesgroups");
     dispatch({
       type: types.fetchSalesGroups,
-      payload: response.data.salesGroups
+      payload: response.data.salesGroups,
+      salesGroup: response.data.salesGroups[0],
+      salesGroupId: response.data.salesGroups[0].sales_group_id
     });
   };
 };

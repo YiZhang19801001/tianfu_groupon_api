@@ -37,7 +37,8 @@ const setPeriod = sales_group_id => {
       orders,
       ordersByStore,
       orderProductsList,
-      pathname
+      pathname,
+      sales_group_id
     );
   };
 };
@@ -125,7 +126,8 @@ const handleChange = async (
   orders,
   ordersByStore,
   orderProductsList,
-  pathname
+  pathname,
+  sales_group_id
 ) => {
   console.log({
     dispatch,
@@ -161,7 +163,7 @@ const handleChange = async (
     });
   } else if (pathname === "/orders" || pathname === "/orders/products") {
     const response = await kidsnparty.get(`/allorders`, {
-      params: { start_date, end_date, method: "products" }
+      params: { sales_group_id, method: "products" }
     });
     dispatch({
       type: types.setPeriod,
@@ -233,8 +235,19 @@ const handleChange = async (
   }
 };
 
+const setSalesGroupId = sales_group_id => {
+  return { type: types.SET_SALES_GROUP_ID, payload: sales_group_id };
+};
+
+const setSalesGroup = salesGroup => {
+  console.log(salesGroup);
+  return { type: types.SET_SALES_GROUP, payload: salesGroup };
+};
+
 export default {
   setPeriod,
   setEndDate,
-  setStartDate
+  setStartDate,
+  setSalesGroupId,
+  setSalesGroup
 };

@@ -38,7 +38,9 @@ const actionTypes = {
   fetchOrderProductsList: "FETCH_ORDER_PRODUCTS_LIST",
   setNewProductStore: "SET_NEW_PRODUCT_STORE",
   fetchOrderBySingleStore: "FETCH_ORDER_BY_SINGLE_STORE",
-  dismissDate: "DISMISS_DATE"
+  dismissDate: "DISMISS_DATE",
+  SET_SALES_GROUP_ID: "set global sales group id",
+  SET_SALES_GROUP: "set global sales group object value"
 };
 
 export default actionTypes;

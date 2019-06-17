@@ -74,14 +74,12 @@ const onPageChange = pageNumber => {
 };
 const fetchByStore = () => {
   return async function(dispatch, getState) {
-    const { startDate, endDate } = getState();
-    const start_date = startDate;
-    const end_date = endDate;
+    const { sales_group_id } = getState();
+
     const response = await kidsnParty.get(`/allorders`, {
       params: {
         method: "byStore",
-        start_date,
-        end_date
+        sales_group_id: sales_group_id || 3
       }
     });
     dispatch({ type: types.fetchOrdersByStore, payload: response.data.orders });
@@ -151,9 +149,9 @@ const fetchbyProducts = () => {
 
 const fetchOrderProductsList = () => {
   return async function(dispatch, getState) {
-    const { startDate, endDate } = getState();
+    const { sales_group_id } = getState();
     const response = await kidsnParty.get(`/allorders`, {
-      params: { start_date: startDate, end_date: endDate, method: "products" }
+      params: { sales_group_id: sales_group_id || 3, method: "products" }
     });
     dispatch({
       type: types.fetchOrderProductsList,
