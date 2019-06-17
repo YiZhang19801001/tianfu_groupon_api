@@ -45,12 +45,13 @@ const marking = (order_id, checked) => {
 
 const index = () => {
   return async function(dispatch, getState) {
-    const { startDate, endDate } = getState();
+    const { startDate, endDate, sales_group_id } = getState();
 
     const response = await kidsnParty.get(`/allorders`, {
       params: {
         start_date: startDate,
-        end_date: endDate
+        end_date: endDate,
+        sales_group_id
       }
     });
     dispatch({ type: types.getOrders, payload: response.data.orders });
@@ -59,14 +60,15 @@ const index = () => {
 
 const onPageChange = pageNumber => {
   return async function(dispatch, getState) {
-    const { startDate, endDate } = getState();
+    const { startDate, endDate, sales_group_id } = getState();
     const start_date = startDate;
     const end_date = endDate;
     const response = await kidsnParty.get(`/allorders`, {
       params: {
         page: pageNumber,
         start_date,
-        end_date
+        end_date,
+        sales_group_id
       }
     });
     dispatch({ type: types.getOrders, payload: response.data.orders });
@@ -86,7 +88,7 @@ const fetchByStore = () => {
   };
 };
 const fetchBySingleStore = location_id => async (dispatch, getState) => {
-  const { startDate, endDate } = getState();
+  const { startDate, endDate, sales_group_id } = getState();
   const start_date = startDate;
   const end_date = endDate;
   const response = await kidsnParty.get(`allorders`, {
@@ -94,7 +96,8 @@ const fetchBySingleStore = location_id => async (dispatch, getState) => {
       method: "all",
       start_date,
       end_date,
-      location_id
+      location_id,
+      sales_group_id
     }
   });
   dispatch({
@@ -104,14 +107,15 @@ const fetchBySingleStore = location_id => async (dispatch, getState) => {
 };
 const search = search_string => {
   return async function(dispatch, getState) {
-    const { startDate, endDate } = getState();
+    const { startDate, endDate, sales_group_id } = getState();
     const start_date = startDate;
     const end_date = endDate;
     const response = await kidsnParty.get(`/allorders`, {
       params: {
         search_string,
         start_date,
-        end_date
+        end_date,
+        sales_group_id
       }
     });
     dispatch({ type: types.getOrders, payload: response.data.orders });
@@ -119,7 +123,7 @@ const search = search_string => {
 };
 const advSearch = search_string => {
   return async function(dispatch, getState) {
-    const { startDate, endDate } = getState();
+    const { startDate, endDate, sales_group_id } = getState();
     const start_date = startDate;
     const end_date = endDate;
     const response = await kidsnParty.get(`/allorders`, {
@@ -127,7 +131,8 @@ const advSearch = search_string => {
         method: "adv",
         search_string,
         start_date,
-        end_date
+        end_date,
+        sales_group_id
       }
     });
     dispatch({ type: types.getOrders, payload: response.data.orders });
@@ -136,9 +141,9 @@ const advSearch = search_string => {
 
 const fetchbyProducts = () => {
   return async function(dispatch, getState) {
-    const { startDate, endDate } = getState();
+    const { startDate, endDate, sales_group_id } = getState();
     const response = await kidsnParty.get(`/report`, {
-      params: { startDate, endDate, report_category: "product" }
+      params: { startDate, endDate, report_category: "product", sales_group_id }
     });
     dispatch({
       type: types.fetchReportDetails,
