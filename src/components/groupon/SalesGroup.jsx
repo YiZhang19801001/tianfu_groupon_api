@@ -42,6 +42,18 @@ class SalesGroup extends React.Component {
         ) : (
           <UpdateSalesGroup />
         )}
+        <div
+          onClick={() => {
+            this.props.dispatch({
+              type: "setState",
+              payload: { showSalesGroup: false }
+            });
+          }}
+          className={`close-section`}
+        >
+          <i className="material-icons">keyboard_arrow_up</i>
+          <span>收起</span> <i className="material-icons">keyboard_arrow_up</i>
+        </div>
       </div>
     );
   }

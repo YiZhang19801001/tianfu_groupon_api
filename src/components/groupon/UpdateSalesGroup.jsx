@@ -52,11 +52,7 @@ class UpdateSalesGruop extends React.Component {
           {this.renderOptions()}
         </select>
         <SalesGroupForm
-          initialValues={{
-            name: this.props.salesGroup.name,
-            start_date: this.props.salesGroup.start_date,
-            end_date: this.props.salesGroup.end_date
-          }}
+          salesGroup={this.props.salesGroup}
           onSubmit={this.onSubmit}
         />
       </div>

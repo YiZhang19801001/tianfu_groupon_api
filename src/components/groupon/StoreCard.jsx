@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchSingleShop, inactiveShop, activeShop } from "../../actions";
-import { makeDate } from "../../helpers";
 import moment from "moment";
+import { uniqueId } from "lodash";
 
 const StoreCard = ({
   setMode,
@@ -11,35 +11,25 @@ const StoreCard = ({
   activeShop,
   inactiveShop
 }) => {
-  const { name, open, address, telephone, status, location_id } = shop;
+  const { name, pickup_date, address, telephone, status, location_id } = shop;
   const selectShop = () => {
     setMode("update");
     fetchSingleShop(location_id);
   };
+
   const renderOpenDates = () => {
-    return open.map(dateString => {
-      return (
-        <span key={`dateString${location_id}${dateString}`} className="date">
-          {makeDate(dateString)}
-        </span>
-      );
-    });
-  };
-  const renderOpenDateTime = () => {
-    if (!open || open.length === 0) {
+    if (!pickup_date || pickup_date.length === 0) {
       return (
         <div>
           <span>尚未设置时间</span>
         </div>
       );
     }
-    return open.map(date => {
-      const { open_date, open_time, close_time } = date;
+    return pickup_date.map(pickupDate => {
+      const { date } = pickupDate;
       return (
-        <div>
-          <span>{`${moment(open_date).format(
-            "MMM DD"
-          )}: ${open_time}--${close_time}`}</span>
+        <div key={uniqueId()}>
+          <span>{moment(date).format("MMM Do")}</span>
         </div>
       );
     });
@@ -67,7 +57,7 @@ const StoreCard = ({
           {telephone}
         </div>
       </div>
-      <div className="date-list">{renderOpenDateTime()}</div>
+      <div className="date-list">{renderOpenDates()}</div>
 
       <div className="control-panel">
         <i className="material-icons" onClick={switchShopStatus}>

@@ -1,54 +1,97 @@
-import React from "react";
-import { Field, reduxForm } from "redux-form";
+import React, { useReducer, useEffect } from "react";
 
-class SalesGroupForm extends React.Component {
-  onSubmit = () => {
-    this.props.onSubmit();
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "inputChange":
+      return {
+        ...state,
+        formValues: { ...state.formValues, ...action.payload }
+      };
+    case "setState":
+      return {
+        ...state,
+        ...action.payload
+      };
+    default:
+      return state;
+  }
+};
+
+const initState = {
+  formValues: {
+    name: "",
+    end_date: "",
+    start_date: ""
+  }
+};
+
+const SalesGroupForm = ({ onSubmit, salesGroup = initState.formValues }) => {
+  const [state, dispatch] = useReducer(reducer, initState);
+
+  useEffect(() => {
+    dispatch({ type: "setState", payload: { formValues: salesGroup } });
+  }, [salesGroup]);
+  const { end_date, start_date, name } = state.formValues;
+
+  const handleOnChange = e => {
+    e.preventDefault();
+
+    dispatch({
+      type: "inputChange",
+      payload: { [e.target.name]: e.target.value }
+    });
   };
-  renderInput = ({ label, input, type, placeholder }) => {
-    return (
-      <label>
-        <span>{label}</span>
-        <input {...input} type={type} placeholder={placeholder} />
-      </label>
-    );
-  };
-  render() {
-    return (
-      <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <div className="form-field">
-          <Field
-            name="name"
-            component={this.renderInput}
+  return (
+    <form
+      onSubmit={e => {
+        e.preventDefault();
+        onSubmit(state.formValues);
+      }}
+    >
+      <div className="form-field">
+        <label>
+          <span>团名</span>
+          <input
             type="text"
-            label={`团名`}
+            value={name}
+            name={`name`}
+            onChange={handleOnChange}
             placeholder={`请填写本次打折团的名称`}
           />
-        </div>
-        <div className="form-field">
-          <Field
-            name="start_date"
+        </label>
+      </div>
+      <div className="form-field">
+        <label>
+          <span>起始日期</span>
+          <input
             type="date"
-            label={`起始日期`}
-            component={this.renderInput}
-            placeholder="请输入起始日期"
+            placeholder={`请输入起始日期`}
+            onChange={handleOnChange}
+            name={`start_date`}
+            value={start_date}
+            max={end_date}
           />
-        </div>
-        <div className="form-field">
-          <Field
-            name="end_date"
+        </label>
+      </div>
+      <div className="form-field">
+        <label>
+          <span>截止日期</span>
+          <input
             type="date"
-            label={`截止日期`}
-            component={this.renderInput}
-            placeholder="请输入截止日期"
+            placeholder={`请输入截止日期`}
+            onChange={handleOnChange}
+            name={`end_date`}
+            value={end_date}
+            min={start_date}
           />
-        </div>
+        </label>
+      </div>
+      <button>确认保存</button>
+    </form>
+  );
+};
 
-        <button>确认保存</button>
-      </form>
-    );
-  }
-}
+export default SalesGroupForm;
 
 const validate = formValues => {
   const errors = {};
@@ -60,11 +103,3 @@ const validate = formValues => {
   }
   return errors;
 };
-
-const reduxFormWrapper = reduxForm({
-  form: "salesGroupForm",
-  validate,
-  enableReinitialize: true
-})(SalesGroupForm);
-
-export default reduxFormWrapper;

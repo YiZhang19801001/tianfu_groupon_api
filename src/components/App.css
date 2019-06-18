@@ -609,13 +609,34 @@ table tbody tr td.long-text span {
   overflow: scroll;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
+  padding: 2rem 0rem;
 }
 @media (max-width: 450px) {
   .screen-groupon {
     width: 100vw;
   }
+}
+.screen-groupon .sales-group-selector-container {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.screen-groupon .sales-group-selector-container .select {
+  height: 2rem;
+}
+.screen-groupon .sales-group-selector-container .button-large {
+  height: 2rem;
+  padding: 0 1rem;
+  outline: none;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 0 3px #d0d0d0;
+  color: #fff;
+  background-color: #4c4cfa;
 }
 .screen-groupon .sales-group {
   width: 90%;
@@ -626,7 +647,6 @@ table tbody tr td.long-text span {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  padding-bottom: 20px;
 }
 @media (max-width: 450px) {
   .screen-groupon .sales-group {
@@ -743,9 +763,16 @@ table tbody tr td.long-text span {
     margin-top: 5px;
   }
 }
+.screen-groupon .sales-group .close-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+  color: #8c8c8c;
+}
 .screen-groupon .store {
   width: 90%;
-  height: 45%;
+  flex: 1;
   box-shadow: 0 2px 5px #a5a5a5;
   border-radius: 3px;
   display: flex;

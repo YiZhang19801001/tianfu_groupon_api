@@ -1,14 +1,19 @@
 import React from "react";
-
+import { connect } from "react-redux";
 import StoreList from "./StoreList";
 import CreateStore from "./CreateStore";
 import UpdateStore from "./UpdateStore";
+
+import { fetchSalesGroups } from "../../actions";
 
 class Store extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = { mode: "none" };
+  }
+  componentDidMount() {
+    this.props.fetchSalesGroups();
   }
   setMode = value => {
     this.setState({ mode: value });
@@ -38,4 +43,7 @@ class Store extends React.Component {
   }
 }
 
-export default Store;
+export default connect(
+  null,
+  { fetchSalesGroups }
+)(Store);

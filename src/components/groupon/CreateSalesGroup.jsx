@@ -6,8 +6,8 @@ import SalesGroupForm from "./SalesGroupForm";
 import { createSalesGroup } from "../../actions";
 
 const CreateSalesGroup = ({ createSalesGroup }) => {
-  const onSubmit = () => {
-    createSalesGroup();
+  const onSubmit = formValues => {
+    createSalesGroup(formValues);
   };
 
   return (

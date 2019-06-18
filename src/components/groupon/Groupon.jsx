@@ -1,16 +1,37 @@
-import React from "react";
-import { Router, Route } from "react-router-dom";
+import React, { useReducer } from "react";
+import SalesGroupSelector from "./SalesGroupSelector";
 
 import SalesGroup from "./SalesGroup";
 import Store from "./Store";
 
-import { history } from "../../history";
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "setState":
+      return { ...state, ...action.payload };
+
+    default:
+      return state;
+  }
+};
+
+const initState = {
+  showSalesGroup: false,
+  showStore: true
+};
 
 const Groupon = () => {
+  const [state, dispatch] = useReducer(reducer, initState);
+
+  const { showSalesGroup, showStore } = state;
+
   return (
     <div className="screen-groupon">
-      <SalesGroup />
-      <Store />
+      {!showSalesGroup ? (
+        <SalesGroupSelector dispatch={dispatch} />
+      ) : (
+        <SalesGroup dispatch={dispatch} />
+      )}
+      {showStore && <Store />}
     </div>
   );
 };

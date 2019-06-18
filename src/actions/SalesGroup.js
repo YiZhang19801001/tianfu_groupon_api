@@ -11,13 +11,18 @@ const index = () => {
     });
   };
 };
-const store = () => {
+const store = formValues => {
   return async function(dispatch, getState) {
-    const requestBody = getState().form.salesGroupForm.values;
+    const requestBody = formValues;
     const response = await kidsnparty.post("/salesgroups", requestBody);
     dispatch({
       type: types.fetchSalesGroups,
-      payload: response.data.salesGroups
+      payload: response.data.salesGroups,
+      salesGroup:
+        response.data.salesGroups[response.data.salesGroups.length - 1],
+      salesGroupId:
+        response.data.salesGroups[response.data.salesGroups.length - 1]
+          .sales_group_id
     });
   };
 };
@@ -30,7 +35,12 @@ const update = salesGroupId => {
     );
     dispatch({
       type: types.fetchSalesGroups,
-      payload: response.data.salesGroups
+      payload: response.data.salesGroups,
+      salesGroup:
+        response.data.salesGroups[response.data.salesGroups.length - 1],
+      salesGroupId:
+        response.data.salesGroups[response.data.salesGroups.length - 1]
+          .sales_group_id
     });
   };
 };
