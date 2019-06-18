@@ -238,6 +238,18 @@ const salesGroupIdReducer = (sales_group_id = 3, action) => {
       return sales_group_id;
   }
 };
+
+const locationPageLayoutReducer = (
+  locationPageLayout = { mode: "showList" },
+  action
+) => {
+  switch (action.type) {
+    case actionTypes.SET_LOCATION_PAGELAYOUT:
+      return { ...locationPageLayout, ...action.payload };
+    default:
+      return locationPageLayout;
+  }
+};
 export default combineReducers({
   locationId: locationIdReducer, //*use for filter customer orders list
   orderProductsList: orderProductsListReducer,
@@ -268,5 +280,6 @@ export default combineReducers({
   salesGroupsList: salesGroupsListReducer,
   salesGroup: salesGroupReducer,
   loginUser: loginUserReducer,
-  sales_group_id: salesGroupIdReducer
+  sales_group_id: salesGroupIdReducer,
+  locationPageLayout: locationPageLayoutReducer
 });

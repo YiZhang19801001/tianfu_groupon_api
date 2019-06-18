@@ -40,7 +40,8 @@ const actionTypes = {
   fetchOrderBySingleStore: "FETCH_ORDER_BY_SINGLE_STORE",
   dismissDate: "DISMISS_DATE",
   SET_SALES_GROUP_ID: "set global sales group id",
-  SET_SALES_GROUP: "set global sales group object value"
+  SET_SALES_GROUP: "set global sales group object value",
+  SET_LOCATION_PAGELAYOUT: "set location page layout property"
 };
 
 export default actionTypes;

@@ -244,10 +244,15 @@ const setSalesGroup = salesGroup => {
   return { type: types.SET_SALES_GROUP, payload: salesGroup };
 };
 
+const setLocationPageLayout = payload => {
+  return { type: types.SET_LOCATION_PAGELAYOUT, payload };
+};
+
 export default {
   setPeriod,
   setEndDate,
   setStartDate,
   setSalesGroupId,
-  setSalesGroup
+  setSalesGroup,
+  setLocationPageLayout
 };

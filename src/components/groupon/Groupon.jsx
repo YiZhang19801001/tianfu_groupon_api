@@ -2,7 +2,8 @@ import React, { useReducer } from "react";
 import SalesGroupSelector from "./SalesGroupSelector";
 
 import SalesGroup from "./SalesGroup";
-import Store from "./Store";
+// import Store from "./Store";
+import Location from "./Location";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -31,7 +32,7 @@ const Groupon = () => {
       ) : (
         <SalesGroup dispatch={dispatch} />
       )}
-      {showStore && <Store />}
+      {showStore && <Location />}
     </div>
   );
 };

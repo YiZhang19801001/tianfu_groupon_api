@@ -81,6 +81,7 @@ export const handleDismissDate = Shop.dismissDate;
 export const getShops = Shop.index;
 export const inactiveShop = Shop.remove;
 export const activeShop = Shop.active;
+export const getShopsBySalesGroupId = Shop.getShopsBySalesGroupId;
 
 // reports actions
 export const fetchReportsSummary = Report.fetchSummary;
@@ -118,6 +119,7 @@ export const setGlobalStartDate = App.setStartDate;
 export const setGlobalEndDate = App.setEndDate;
 export const setSalesGroupId = App.setSalesGroupId;
 export const setSalesGroup = App.setSalesGroup;
+export const setLocationPageLayout = App.setLocationPageLayout;
 
 // Auth actions
 export const userLogin = Auth.login;

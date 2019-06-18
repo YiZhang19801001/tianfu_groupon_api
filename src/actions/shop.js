@@ -85,6 +85,15 @@ const dismissDate = newDate => {
   };
 };
 
+const getShopsBySalesGroupId = sales_group_id => {
+  return async function(dispatch) {
+    const response = await kidsnParty.get(
+      `/locations?sales_group_id=${sales_group_id}`
+    );
+    dispatch({ type: types.getShops, payload: response.data.locations });
+  };
+};
+
 export default {
   index,
   active,
@@ -94,5 +103,6 @@ export default {
   update,
   patch,
   dismissDate,
-  handleDateChange
+  handleDateChange,
+  getShopsBySalesGroupId
 };
