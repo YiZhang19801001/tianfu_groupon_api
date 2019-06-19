@@ -6,7 +6,12 @@ import EditProduct from "./EditProduct";
 import CreateProduct from "./CreateProduct";
 import { history } from "../history";
 import { connect } from "react-redux";
-import { getProducts, searchByName, fetchSalesGroups } from "../actions";
+import {
+  getProducts,
+  searchByName,
+  fetchSalesGroups,
+  getAvailableShops
+} from "../actions";
 
 class ProductManageMainWindow extends React.Component {
   constructor(props) {
@@ -20,6 +25,7 @@ class ProductManageMainWindow extends React.Component {
   componentDidMount() {
     this.props.getProducts(this.state.product_status);
     this.props.fetchSalesGroups();
+    this.props.getAvailableShops();
   }
   changeProductStatus = e => {
     const content = e.target.innerText;
@@ -105,5 +111,5 @@ class ProductManageMainWindow extends React.Component {
 
 export default connect(
   null,
-  { getProducts, searchByName, fetchSalesGroups }
+  { getProducts, searchByName, fetchSalesGroups, getAvailableShops }
 )(ProductManageMainWindow);

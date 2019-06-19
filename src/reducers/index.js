@@ -30,11 +30,14 @@ const appSettingReducer = (appSetting = {}, action) => {
 };
 
 const shopsReducer = (shops = [], action) => {
-  if (action.type === actionTypes.getShops) {
-    return action.payload;
+  switch (action.type) {
+    case actionTypes.CREATE_PICKUP_DATE:
+    case actionTypes.UPDATE_PICKUP_DATE:
+    case actionTypes.getShops:
+      return action.payload;
+    default:
+      return shops;
   }
-
-  return shops;
 };
 
 const ordersReducer = (orders = [], action) => {
@@ -246,8 +249,20 @@ const locationPageLayoutReducer = (
   switch (action.type) {
     case actionTypes.SET_LOCATION_PAGELAYOUT:
       return { ...locationPageLayout, ...action.payload };
+    case actionTypes.CREATE_PICKUP_DATE:
+      return { ...locationPageLayout, mode: "showList" };
     default:
       return locationPageLayout;
+  }
+};
+
+const allShopsReducer = (allShops = [], action) => {
+  switch (action.type) {
+    case actionTypes.GET_ALL_SHOPS:
+      return action.payload;
+
+    default:
+      return allShops;
   }
 };
 export default combineReducers({
@@ -281,5 +296,6 @@ export default combineReducers({
   salesGroup: salesGroupReducer,
   loginUser: loginUserReducer,
   sales_group_id: salesGroupIdReducer,
-  locationPageLayout: locationPageLayoutReducer
+  locationPageLayout: locationPageLayoutReducer,
+  allShops: allShopsReducer
 });

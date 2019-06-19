@@ -15,6 +15,7 @@ import SalesGroup from "./SalesGroup";
 import App from "./App.js";
 import Auth from "./Auth.js";
 import productDiscount from "./productDiscount";
+import PickupDate from "./PickupDate";
 
 // produt actions
 export const getProducts = Product.index;
@@ -79,6 +80,7 @@ export const updateShop = Shop.update;
 export const handleDateChange = Shop.handleDateChange;
 export const handleDismissDate = Shop.dismissDate;
 export const getShops = Shop.index;
+export const getAvailableShops = Shop.getAvailableShops;
 export const inactiveShop = Shop.remove;
 export const activeShop = Shop.active;
 export const getShopsBySalesGroupId = Shop.getShopsBySalesGroupId;
@@ -132,3 +134,10 @@ export const actionTypes = types;
 export const createProductDiscount = productDiscount.create;
 export const updateProductDiscount = productDiscount.update;
 export const removeProductDiscount = productDiscount.remove;
+
+// export pickup date actions
+export const createPickupDate = PickupDate.store;
+
+export const updatePickupDate = PickupDate.update;
+
+export const deletePickupDate = PickupDate.delete;

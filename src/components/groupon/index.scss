@@ -30,6 +30,83 @@
       background-color: color("myBlue");
     }
   }
+  .store-list-container {
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    .title {
+      font-size: 1rem;
+      color: color("textPrimary");
+    }
+    .store-list {
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+      width: 100%;
+      border-top: 1px solid #c3c3c360;
+      border-bottom: 1px solid #c3c3c360;
+      padding: 0.5rem 1rem;
+      .store-list-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid color("myBlue");
+        margin-bottom: 0.5rem;
+        .content {
+          display: flex;
+          flex-direction: column;
+          .name {
+            font-size: 1rem;
+            color: color("text");
+            margin-bottom: 0.5rem;
+          }
+          .date-list {
+            display: flex;
+            flex-direction: column;
+            .date-list-item {
+              background-color: color("myBlue");
+              color: #fff;
+              padding: 0.3rem 0.6rem;
+              border-radius: 3px;
+              margin-bottom: 0.3rem;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            }
+          }
+        }
+        .control {
+          .button-edit {
+            background-color: color("main");
+            outline: none;
+            border: none;
+            height: calc(100% - 0.6rem);
+            padding: 1rem;
+            color: color("text");
+            font-size: 1rem;
+            text-transform: uppercase;
+            border-radius: 5px;
+            box-shadow: 0 0 3px color("boxShadow");
+          }
+        }
+      }
+    }
+    .button-container {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      padding: 0.5rem 1rem;
+      button {
+        height: 2rem;
+        padding: 0 1rem;
+        outline: none;
+        border-radius: 4px;
+        border: none;
+        box-shadow: 0 0 3px #d0d0d0;
+        color: #fff;
+        background-color: color("myBlue");
+      }
+    }
+  }
   .sales-group {
     width: 90%;
     height: 45%;

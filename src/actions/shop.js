@@ -93,6 +93,15 @@ const getShopsBySalesGroupId = sales_group_id => {
     dispatch({ type: types.getShops, payload: response.data.locations });
   };
 };
+/**
+ * function - call api get all shops
+ */
+const getAvailableShops = () => {
+  return async function(dispatch) {
+    const response = await kidsnParty.get(`/locations`);
+    dispatch({ type: types.GET_ALL_SHOPS, payload: response.data.locations });
+  };
+};
 
 export default {
   index,
@@ -104,5 +113,6 @@ export default {
   patch,
   dismissDate,
   handleDateChange,
-  getShopsBySalesGroupId
+  getShopsBySalesGroupId,
+  getAvailableShops
 };

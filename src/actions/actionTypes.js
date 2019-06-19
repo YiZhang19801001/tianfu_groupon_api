@@ -41,7 +41,10 @@ const actionTypes = {
   dismissDate: "DISMISS_DATE",
   SET_SALES_GROUP_ID: "set global sales group id",
   SET_SALES_GROUP: "set global sales group object value",
-  SET_LOCATION_PAGELAYOUT: "set location page layout property"
+  SET_LOCATION_PAGELAYOUT: "set location page layout property",
+  GET_ALL_SHOPS: "get all shops without any conditions",
+  CREATE_PICKUP_DATE: "create new pickup date",
+  UPDATE_PICKUP_DATE: "after updated pickup date values"
 };
 
 export default actionTypes;

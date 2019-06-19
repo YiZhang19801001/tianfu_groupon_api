@@ -1,7 +1,15 @@
 import React, { useEffect } from "react";
 import { uniqueId } from "lodash";
+import StoreListItem from "./StoreListItem";
 
-const StoreList = ({ shops, getShops, salesGroup, setLocationPageLayout }) => {
+const StoreList = ({
+  shops,
+  getShops,
+  salesGroup,
+  updatePickupDate,
+  setLocationPageLayout,
+  deletePickupDate
+}) => {
   const { sales_group_id } = salesGroup;
   useEffect(() => {
     getShops(sales_group_id);
@@ -12,13 +20,19 @@ const StoreList = ({ shops, getShops, salesGroup, setLocationPageLayout }) => {
       <div className={`title`}>已关联的店铺</div>
       <div className={`store-list`}>
         {shops.map(shop => {
-          return <div key={uniqueId()}>{shop.name}</div>;
+          return (
+            <StoreListItem
+              updatePickupDate={updatePickupDate}
+              key={uniqueId()}
+              shop={shop}
+              deletePickupDate={deletePickupDate}
+            />
+          );
         })}
       </div>
       <div className={`button-container`}>
         <button
           onClick={e => {
-            e.preventDefault();
             setLocationPageLayout({ mode: "linkNew" });
           }}
         >
