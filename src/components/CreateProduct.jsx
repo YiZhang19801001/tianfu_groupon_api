@@ -12,8 +12,8 @@ import {
 import ProductForm from "./ProductForm";
 
 class CreateProduct extends React.Component {
-  onSubmit = file => {
-    this.props.createNewProduct(file, true);
+  onSubmit = (file, formValues) => {
+    this.props.createNewProduct(file, formValues);
   };
 
   componentDidMount() {

@@ -25,10 +25,10 @@ const show = id => {
   };
 };
 
-const update = (product_id, file, isGroupon) => {
+const update = (product_id, file, formValues) => {
   return async function(dispatch, getState) {
-    const product = getState().form.productForm.values;
-    const { options, category, location_id } = getState().newProduct;
+    const product = formValues;
+    const { category } = getState().newProduct;
     // How To:: add post headers for axios
     const headers = { language_id: 2 };
     const response = await kidsnParty.put(
@@ -36,10 +36,7 @@ const update = (product_id, file, isGroupon) => {
       {
         product,
         category,
-        options,
-        location_id,
-        file,
-        isGroupon
+        file
       },
       {
         headers
@@ -58,16 +55,13 @@ const switchProductStatus = product => {
   };
 };
 
-const create = (file, isGroupon) => {
+const create = (file, formValues) => {
   return async function(dispatch, getState) {
-    const product = getState().form.productForm.values;
-    const { options, category, location_id } = getState().newProduct;
+    const product = formValues;
+    const { category } = getState().newProduct;
     const response = await kidsnParty.post("/products", {
       product,
-      isGroupon,
-      location_id,
       category,
-      options,
       file
     });
 

@@ -9,7 +9,7 @@ const update = values => {
       `/discounts/${product_discount_id}`,
       values
     );
-    dispatch({ type: types.getProduct, payload: response.data });
+    dispatch({ type: types.getProduct, payload: response.data.product });
   };
 };
 
@@ -17,7 +17,7 @@ const create = values => {
   return async function(dispatch) {
     const response = await kidsnParty.post("/discounts", values);
 
-    dispatch({ type: types.getProduct, payload: response.data });
+    dispatch({ type: types.getProduct, payload: response.data.product });
   };
 };
 
@@ -28,7 +28,7 @@ const remove = product_discount_id => {
       { params: { product_discount_id } }
     );
 
-    dispatch({ type: types.getProduct, payload: response.data });
+    dispatch({ type: types.getProduct, payload: response.data.product });
   };
 };
 

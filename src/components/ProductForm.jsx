@@ -144,8 +144,8 @@ const ProductForm = ({
       </div>
       <form
         onSubmit={e => {
-          e.stopPropagation();
-          onSubmit(state.image, state.isGroupon);
+          e.preventDefault();
+          onSubmit(state.image, state.formValues);
         }}
         className="edit-form"
       >
