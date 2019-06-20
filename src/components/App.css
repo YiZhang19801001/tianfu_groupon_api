@@ -613,6 +613,50 @@ table tbody tr td.long-text span {
   align-items: center;
   padding: 2rem 0rem;
 }
+.screen-groupon .link-new-store {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 1rem;
+  box-shadow: 0 0 10px #d0d0d0;
+  border-radius: 5px;
+}
+.screen-groupon .link-new-store .select-input,
+.screen-groupon .link-new-store .date-input {
+  height: 2rem;
+  margin-bottom: 0.5rem;
+  border-radius: 3px;
+  border: 1px solid #3c3c3c60;
+  outline: none;
+}
+.screen-groupon .link-new-store .button-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.screen-groupon .link-new-store .button-container .button-save,
+.screen-groupon .link-new-store .button-container .button-cancel {
+  outline: none;
+  border-radius: 4px;
+  border: none;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 0 3px #d0d0d0;
+  color: #fff;
+  text-transform: uppercase;
+  margin-left: 0.5rem;
+}
+.screen-groupon .link-new-store .button-container .button-save {
+  background-color: #ffba2d;
+}
+.screen-groupon .link-new-store .button-container .button-cancel {
+  background-color: #f55747;
+}
+@media (max-width: 450px) {
+  .screen-groupon .link-new-store {
+    width: 100%;
+  }
+}
 @media (max-width: 450px) {
   .screen-groupon {
     width: 100vw;

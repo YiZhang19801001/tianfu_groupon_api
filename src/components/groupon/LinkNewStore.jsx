@@ -46,8 +46,13 @@ export default ({
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <select value={location_id} name={`location_id`} onChange={onChange}>
+    <form className={`link-new-store`} onSubmit={onSubmit}>
+      <select
+        value={location_id}
+        className={`select-input`}
+        name={`location_id`}
+        onChange={onChange}
+      >
         <option value={`text_label`} disabled={true}>
           请选择要关联的店铺
         </option>
@@ -66,16 +71,20 @@ export default ({
         max={end_date}
         value={date}
         onChange={onChange}
+        className={`date-input`}
       />
-      <button>save</button>
-      <button
-        onClick={e => {
-          e.preventDefault();
-          setLocationPageLayout({ mode: "showList" });
-        }}
-      >
-        cancel
-      </button>
+      <div className={`button-container`}>
+        <button className={`button-save`}>save</button>
+        <button
+          onClick={e => {
+            e.preventDefault();
+            setLocationPageLayout({ mode: "showList" });
+          }}
+          className={`button-cancel`}
+        >
+          cancel
+        </button>
+      </div>
     </form>
   );
 };
