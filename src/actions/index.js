@@ -123,6 +123,8 @@ export const setSalesGroupId = App.setSalesGroupId;
 export const setSalesGroup = App.setSalesGroup;
 export const setLocationPageLayout = App.setLocationPageLayout;
 
+export const setShopsLayout = App.setShopsLayout;
+
 // Auth actions
 export const userLogin = Auth.login;
 export const checkLogin = Auth.check;

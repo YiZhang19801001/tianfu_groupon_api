@@ -55,6 +55,13 @@ const SubMenu = () => {
         <i className="material-icons">supervisor_account</i>
         人员管理
       </Link>
+      <Link
+        to={`${process.env.PUBLIC_URL}/shops`}
+        className={getClass("/shops")}
+      >
+        <i className="material-icons">store_mall_directory</i>
+        店铺管理
+      </Link>
     </div>
   );
 };

@@ -3994,6 +3994,130 @@ body {
     opacity: 1;
   }
 }
+.shops {
+  width: 90vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 1rem;
+}
+.shops .shop-list {
+  width: 100%;
+}
+.shops .shop-list .shop-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 0 3px #d0d0d0;
+  border-radius: 5px;
+  width: 60%;
+  padding: 1rem;
+}
+.shops .shop-list .shop-card .content {
+  flex: 1;
+}
+.shops .shop-list .shop-card .content .row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0.2rem;
+}
+.shops .shop-list .shop-card .content .row .title {
+  font-size: 0.8rem;
+  color: #8c8c8c;
+  width: 3rem;
+  margin-right: 0.5rem;
+}
+.shops .shop-list .shop-card .content .row .value {
+  color: #3b3b3b;
+}
+.shops .shop-list .shop-card .button-container {
+  width: 4rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+.shops .shop-list .shop-card .button-container .button-edit {
+  border-radius: 5px;
+  width: 100%;
+  height: 3rem;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 0 3px #d0d0d0;
+  color: #fff;
+  background-color: #ffba2d;
+}
+.shops .shop-list .button-container {
+  display: flex;
+  align-items: center;
+}
+.shops .shop-list .button-container .button-add {
+  outline: none;
+  border: none;
+  box-shadow: 0 0 3px #d0d0d0;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin-left: 0.5rem;
+  color: #fff;
+  background-color: #4c4cfa;
+}
+.shops form {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+.shops form .form-field {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.shops form .form-field label {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: #8c8c8c;
+  width: 4rem;
+  margin-right: 0.5rem;
+}
+.shops form .form-field input {
+  height: 2rem;
+  flex: 1;
+  outline: none;
+  border-radius: 3px;
+  border: 1px solid #3c3c3c60;
+}
+.shops form .button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.shops form .button-container .button-save,
+.shops form .button-container .button-cancel {
+  outline: none;
+  border: none;
+  box-shadow: 0 0 3px #d0d0d0;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin-left: 0.5rem;
+  color: #fff;
+}
+.shops form .button-container .button-cancel {
+  background-color: #f55747;
+}
+.shops form .button-container .button-save {
+  background-color: #ffba2d;
+}
+
 .app {
   display: flex;
   width: 100vw;

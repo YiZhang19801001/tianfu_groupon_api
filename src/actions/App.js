@@ -248,11 +248,16 @@ const setLocationPageLayout = payload => {
   return { type: types.SET_LOCATION_PAGELAYOUT, payload };
 };
 
+const setShopsLayout = payload => {
+  return { type: types.SET_SHOPSLAYOUT, payload };
+};
+
 export default {
   setPeriod,
   setEndDate,
   setStartDate,
   setSalesGroupId,
   setSalesGroup,
-  setLocationPageLayout
+  setLocationPageLayout,
+  setShopsLayout
 };

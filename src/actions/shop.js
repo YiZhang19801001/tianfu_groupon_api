@@ -19,11 +19,11 @@ export const fetchShop = location_id => {
   };
 };
 
-const create = () => {
-  return async function(dispatch, getState) {
+const create = formValues => {
+  return async function(dispatch) {
     const requestBody = {
-      ...getState().form.shopForm.values,
-      open: getState().selectedShop.open
+      ...formValues,
+      open: ""
     };
     const response = await kidsnParty.post(`/locations`, requestBody);
 
@@ -34,11 +34,11 @@ const create = () => {
   };
 };
 
-const update = () => {
+const update = formValues => {
   return async function(dispatch, getState) {
     const requestBody = {
-      ...getState().form.shopForm.values,
-      open: getState().selectedShop.open
+      ...formValues,
+      open: ""
     };
     const { location_id } = getState().selectedShop;
     const response = await kidsnParty.put(

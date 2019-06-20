@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import { actionTypes } from "../actions";
 import { reducer as formReducer } from "redux-form";
 import newProductReducer from "./newProductReducer";
-import selectedShopReducer from "./selectedShopReducer";
+// import selectedShopReducer from "./selectedShopReducer";
 
 const productsReducer = (products = [], action) => {
   if (action.type === actionTypes.getProducts) {
@@ -265,6 +265,26 @@ const allShopsReducer = (allShops = [], action) => {
       return allShops;
   }
 };
+
+const shopsLayoutReducer = (shopsLayout = { path: "list" }, action) => {
+  switch (action.type) {
+    case actionTypes.SET_SHOPSLAYOUT:
+      return { ...shopsLayout, ...action.payload };
+
+    default:
+      return shopsLayout;
+  }
+};
+
+const selectedShopReducer = (selectedShop = {}, action) => {
+  switch (action.type) {
+    case actionTypes.fetchSingleShop:
+      return action.payload;
+
+    default:
+      return selectedShop;
+  }
+};
 export default combineReducers({
   locationId: locationIdReducer, //*use for filter customer orders list
   orderProductsList: orderProductsListReducer,
@@ -297,5 +317,6 @@ export default combineReducers({
   loginUser: loginUserReducer,
   sales_group_id: salesGroupIdReducer,
   locationPageLayout: locationPageLayoutReducer,
-  allShops: allShopsReducer
+  allShops: allShopsReducer,
+  shopsLayout: shopsLayoutReducer
 });

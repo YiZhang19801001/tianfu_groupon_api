@@ -10,6 +10,7 @@ import { Groupon } from "./groupon";
 import { UserManage } from "./user";
 import { PrivateRoute, Reject } from "./shared";
 import { Login } from "./auth";
+import ShopsMainPage from "./shops";
 
 const Routes = () => {
   return (
@@ -36,8 +37,8 @@ const Routes = () => {
       />
       <PrivateRoute
         path={`${process.env.PUBLIC_URL}/shops`}
-        component={ShopManageMainWindow}
-        role={`accessSalesGroups`}
+        component={ShopsMainPage}
+        role={`accessProducts`}
       />
       <PrivateRoute
         path={`${process.env.PUBLIC_URL}/charts`}
