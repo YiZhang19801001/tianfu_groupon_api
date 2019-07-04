@@ -68,7 +68,6 @@ export default ({
         type="date"
         name={`date`}
         min={start_date}
-        max={end_date}
         value={date}
         onChange={onChange}
         className={`date-input`}
