@@ -12,8 +12,8 @@ class UpdateSalesGruop extends React.Component {
     this.state = { salesGroupId: "text_label" };
   }
 
-  onSubmit = () => {
-    this.props.updateSalesGroup(this.state.salesGroupId);
+  onSubmit = formValues => {
+    this.props.updateSalesGroup(this.state.salesGroupId, formValues);
   };
   handleSelectChange = e => {
     this.setState({ salesGroupId: e.target.value });

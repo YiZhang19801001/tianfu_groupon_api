@@ -12,7 +12,7 @@ const index = () => {
   };
 };
 const store = formValues => {
-  return async function(dispatch, getState) {
+  return async function(dispatch) {
     const requestBody = formValues;
     const response = await kidsnparty.post("/salesgroups", requestBody);
     dispatch({
@@ -26,9 +26,9 @@ const store = formValues => {
     });
   };
 };
-const update = salesGroupId => {
-  return async function(dispatch, getState) {
-    const requestBody = getState().form.salesGroupForm.values;
+const update = (salesGroupId, formValues) => {
+  return async function(dispatch) {
+    const requestBody = formValues;
     const response = await kidsnparty.put(
       `/salesgroups/${salesGroupId}`,
       requestBody
