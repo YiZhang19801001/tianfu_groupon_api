@@ -12,7 +12,13 @@ export default ({ onSubmit, setShopsLayout }) => {
       }}
     >
       <ShopForm
-        initFormValues={{ name: "", address: "", telephone: "" }}
+        initFormValues={{
+          name: "",
+          address: "",
+          telephone: "",
+          en_name: "",
+          cn_name: ""
+        }}
         onSubmit={onSubmit}
         setShopsLayout={setShopsLayout}
       />

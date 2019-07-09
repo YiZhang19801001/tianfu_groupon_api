@@ -1,6 +1,7 @@
 import React, { useReducer, useEffect } from "react";
 import { uniqueId } from "lodash";
 import moment from "moment";
+import { history } from "../history";
 import CreateNewDiscount from "./CreateNewDiscount";
 
 import ProductFormCategorySelector from "./ProductFormCategorySelector";
@@ -262,6 +263,16 @@ const ProductForm = ({
             style={{ backgroundColor: "#FFBA2D" }}
           >
             确认保存
+          </button>
+          <button
+            className={`button-add`}
+            style={{ backgroundColor: "#f55747" }}
+            onClick={e => {
+              e.preventDefault();
+              history.push(`${process.env.PUBLIC_URL}/products`);
+            }}
+          >
+            放弃修改
           </button>
         </div>
       </form>
