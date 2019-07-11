@@ -24,23 +24,48 @@ class StoreOrderList extends React.Component {
     );
   };
   renderStoreOrderProducts = list => {
-    if (list.length === 0) {
+    if (list === {}) {
       return <p>本店今天没有订单</p>;
     }
-    return list.map(productArray => {
-      return (
-        <div
-          className="component-store-order-list__store__product-list__product-card"
-          key={`storeOrderProduct${productArray[0].product_name}`}
-        >
-          <p>
-            <span className="name">{productArray[0].product_name}</span>
 
-            <span className="quantity">
-              x{this.calculateTotalQuantity(productArray)}
-            </span>
-          </p>
-          {/* {this.renderProductItems(productArray)} */}
+
+    const arrayOfList = Object.keys(list).map(key=>{
+      return {date:key,products:list[key].reduce((resArr,x)=>{
+        if(resArr.find(y=>y.product_id===x.product_id) === undefined){
+          return [...resArr,x];
+        }else{
+          return resArr.map(z=>{
+            if(z.product_id === x.product_id){
+              return {...z,quantity:z.quantity + x.quantity};
+            }else{
+              return z;
+            }
+          })
+        }
+      },[])};
+
+    })
+
+    
+    
+    return arrayOfList.map((newListItem ,idx)=> {
+      return (
+        <div key={`newListItem${idx}`}>
+        <div style={{marginTop:'0.5rem'}}>{newListItem.date}</div>
+          {newListItem.products.map((ele,i)=>{
+            return <div
+            className="component-store-order-list__store__product-list__product-card"
+            key={`storeOrderProduct${i}`}
+          >
+            <p>
+              <span className="name">{ele.name}</span>
+              <span>{ele.price}</span>
+              <span className="quantity">
+                x{ele.quantity}
+              </span>
+            </p>
+          </div>
+          })}
         </div>
       );
     });
