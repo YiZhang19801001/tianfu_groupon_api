@@ -57,7 +57,7 @@ class CustomerOrderList extends React.Component {
   dataFormat = [
     { value: "invoice_no", type: "text" },
     { value: "username", type: "text" },
-    { value: "fax", type: "text" },
+    { value: "pickup_date", type: "text" },
     { value: "item_details", type: "long-text" },
     { value: "status_name", type: "text" },
     { value: "total_quantity", type: "number" }
@@ -65,7 +65,7 @@ class CustomerOrderList extends React.Component {
 
   makeTableData = list => {
     return list.reduce((init, orderItem) => {
-      const { invoice_no, fax, status_name, user, order_items } = orderItem;
+      const { invoice_no, pickup_date, status_name, user, order_items } = orderItem;
       const { username } = user;
       let total_quantity = 0;
       let item_details = "";
@@ -75,7 +75,7 @@ class CustomerOrderList extends React.Component {
       });
       return [
         ...init,
-        { invoice_no, username, fax, item_details, status_name, total_quantity }
+        { invoice_no, username, pickup_date, item_details, status_name, total_quantity }
       ];
     }, []);
   };

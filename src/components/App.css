@@ -2992,7 +2992,7 @@ body {
 }
 
 .product-card .product-card-header .product-image-container {
-  width: 90px;
+  width: 64px;
   height: 64px;
   display: flex;
   justify-content: center;
@@ -3006,7 +3006,7 @@ body {
 }
 
 .product-card .product-card-header .product-image-container img {
-  width: 90px;
+  width: 64px;
   height: 64px;
   border-radius: 5px;
 }
