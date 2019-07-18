@@ -13,6 +13,11 @@ import ProductForm from "./ProductForm";
 
 class CreateProduct extends React.Component {
   onSubmit = (file, formValues) => {
+    if (formValues.location_id === 'text_label') {
+      alert('please select a manufacturer for this product')
+
+      return false;
+    }
     this.props.createNewProduct(file, formValues);
   };
 

@@ -3,7 +3,7 @@ import kidsnParty from "../apis/kidsnParty";
 import { history } from "../history";
 
 const index = product_status => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     const response = await kidsnParty.get("/products", {
       params: { language_id: 2, product_status }
     });
@@ -17,7 +17,7 @@ const setLocation = value => {
 };
 
 const show = id => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     const response = await kidsnParty.get(`/products/${id}`);
 
     dispatch({ type: types.getProduct, payload: response.data });
@@ -26,7 +26,7 @@ const show = id => {
 };
 
 const update = (product_id, file, formValues) => {
-  return async function(dispatch, getState) {
+  return async function (dispatch, getState) {
     const product = formValues;
     const { category } = getState().newProduct;
     // How To:: add post headers for axios
@@ -46,7 +46,7 @@ const update = (product_id, file, formValues) => {
   };
 };
 const switchProductStatus = product => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     const response = await kidsnParty.patch(`/products/${product.product_id}`, {
       product
     });
@@ -56,7 +56,7 @@ const switchProductStatus = product => {
 };
 
 const create = (file, formValues) => {
-  return async function(dispatch, getState) {
+  return async function (dispatch, getState) {
     const product = formValues;
     const { category } = getState().newProduct;
     const response = await kidsnParty.post("/products", {
@@ -75,7 +75,7 @@ const removeOption = option_id => {
 };
 
 const search = (value, product_status) => {
-  return async function(dispatch) {
+  return async function (dispatch) {
     const response = await kidsnParty.get("products", {
       params: { language_id: 2, product_status, search_string: value }
     });
