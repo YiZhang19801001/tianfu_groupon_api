@@ -3843,17 +3843,30 @@ body {
   padding: 0;
   font-size: 1.2rem;
   color: #ffba2d;
+  text-shadow: 0 0 2px #d0d0d0;
 }
 .main-window .component-productorders .section .header h2 {
   color: #8c8c8c;
 }
-.main-window .component-productorders .section .header .control {
+.main-window .component-productorders .section .sub-table {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+  box-shadow: 0 0 3px #d0d0d0;
+  padding: 0.5rem 1rem;
+}
+.main-window .component-productorders .section .sub-table .sub-table-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-window .component-productorders .section .sub-table .sub-table-section-header .control {
   min-width: 10rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.main-window .component-productorders .section .header .control button {
+.main-window .component-productorders .section .sub-table .sub-table-section-header .control button {
   border: 2px solid #ffba2d;
   box-shadow: 0 0 3px #d0d0d0;
   outline: none;

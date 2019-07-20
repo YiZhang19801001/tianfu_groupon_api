@@ -38,23 +38,38 @@
           padding: 0;
           font-size: 1.2rem;
           color: color("main");
+          text-shadow: 0 0 2px color('boxShadow');
         }
         h2 {
           color: color("textPrimary");
         }
-        .control {
-          min-width: 10rem;
+
+      }
+      .sub-table{
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        border-radius: 4px;
+        box-shadow: 0 0 3px color('boxShadow');
+        padding: 0.5rem 1rem;
+        .sub-table-section-header{
           display: flex;
           justify-content: space-between;
           align-items: center;
-          button {
-            border: 2px solid color("main");
-            box-shadow: 0 0 3px color("boxShadow");
-            outline: none;
-            color: color("main");
-            background: #fff;
-            padding: 0.2rem 0.5rem;
-            border-radius: 0.2rem;
+                
+          .control {
+            min-width: 10rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            button {
+              border: 2px solid color("main");
+              box-shadow: 0 0 3px color("boxShadow");
+              outline: none;
+              color: color("main");
+              background: #fff;
+              padding: 0.2rem 0.5rem;
+              border-radius: 0.2rem;
+            }
           }
         }
       }
