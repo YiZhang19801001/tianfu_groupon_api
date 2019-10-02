@@ -63,7 +63,7 @@ const SalesGroupSelector = ({
           e.preventDefault();
           window.location.href = `http://kidsnparty.com.au/roben_api/groupon/public/api/excels?sales_group_id=${
             salesGroup.sales_group_id
-          }`;
+            }`;
         }}
       >
         导出 {salesGroup.name} 统计表
