@@ -5,7 +5,7 @@
   "homepage": "http://kidsnparty.com.au/groupon/admin",
   "dependencies": {
     "ajv": "^6.7.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "chart.js": "^2.7.3",
     "check-prop-types": "^1.1.2",
     "highcharts": "^7.0.0",
